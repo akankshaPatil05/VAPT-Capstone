@@ -1,0 +1,321 @@
+Plugin ID,CVE,CVSS v2.0 Base Score,Risk,Host,Protocol,Port,Name,Synopsis,Description,Solution,See Also,Plugin Output,STIG Severity,CVSS v4.0 Base Score,CVSS v4.0 Base+Threat Score,CVSS v3.0 Base Score,CVSS v2.0 Temporal Score,CVSS v3.0 Temporal Score,VPR Score,EPSS Score,Risk Factor,BID,XREF,MSKB,Plugin Publication Date,Plugin Modification Date,Metasploit,Core Impact,CANVAS
+"10107","","","None","192.168.0.109","tcp","80","HTTP Server Type and Version","A web server is running on the remote host.","This plugin attempts to determine the type and the version of the
+  remote web server.","n/a","","The remote web server type is :
+
+Apache/2.2.22 (Debian)","","","","","","","","","None","","IAVT:0001-T-0931","","2000/01/04","2020/10/30","","",""
+"10114","CVE-1999-0524","2.1","Low","192.168.0.109","icmp","0","ICMP Timestamp Request Remote Date Disclosure","It is possible to determine the exact time set on the remote host.","The remote host answers to an ICMP timestamp request.  This allows an
+attacker to know the date that is set on the targeted machine, which
+may assist an unauthenticated, remote attacker in defeating time-based
+authentication protocols.
+
+Timestamps returned from machines running Windows Vista / 7 / 2008 /
+2008 R2 are deliberately incorrect, but usually within 1000 seconds of
+the actual system time.","Filter out the ICMP timestamp requests (13), and the outgoing ICMP
+timestamp replies (14).","","The difference between the local and remote clocks is 4163 seconds.
+","","","","","","","","","Low","","CWE:200","","1999/08/01","2024/10/07","","",""
+"10192","","","None","192.168.0.109","tcp","3128","HTTP Proxy CONNECT Request Relaying","An HTTP proxy running on the remote host can be used to establish
+interactive sessions.","The proxy allows users to perform CONNECT requests such as :
+
+	CONNECT http://cvs.example.org:23 
+
+This request gives the person who made it the ability to have an
+interactive session with a third-party site. 
+
+This issue may allow attackers to bypass your firewall by connecting
+to sensitive ports such as 23 (telnet) via the proxy, or it may allow
+internal users to bypass the firewall rules and connect to ports or
+sites they should not be allowed to. 
+
+In addition, your proxy may be used to perform attacks against other
+networks.","Reconfigure your proxy to refuse CONNECT requests.","","","","","","","","","","","None","","","","1999/06/22","2016/04/27","","",""
+"10195","","","None","192.168.0.109","tcp","3128","HTTP Proxy Open Relay Detection","The remote web proxy server accepts requests.","The remote web proxy accepts unauthenticated HTTP requests from the
+Nessus scanner.  By routing requests through the affected proxy, a user
+may be able to gain some degree of anonymity while browsing websites,
+which will see requests as originating from the remote host itself
+rather than the user's host.","Make sure access to the proxy is limited to valid users / hosts.","","","","","","","","","","","None","","","","1999/06/22","2014/04/25","","",""
+"10287","","","None","192.168.0.109","udp","0","Traceroute Information","It was possible to obtain traceroute information.","Makes a traceroute to the remote host.","n/a","","For your information, here is the traceroute from 192.168.0.112 to 192.168.0.109 : 
+192.168.0.112
+192.168.0.109
+
+Hop Count: 1
+","","","","","","","","","None","","","","1999/11/27","2023/12/04","","",""
+"11305","","","None","192.168.0.109","tcp","3128","HTTP Proxy Open gopher:// Request Relaying","The HTTP proxy accepts gopher:// requests.","Gopher is an old network protocol which predates HTTP and is nearly 
+unused today. As a result, gopher-compatible software is generally 
+less audited and more likely to contain security bugs than others.
+
+By making gopher requests, an attacker may evade your firewall settings,
+by making connections to port 70, or may even exploit arcane flaws in 
+this protocol to gain more privileges on this host.","Reconfigure your proxy so that it refuses gopher requests.","","","","","","","","","","","None","","","","2003/03/02","2020/01/02","","",""
+"11936","","","None","192.168.0.109","tcp","0","OS Identification","It is possible to guess the remote operating system.","Using a combination of remote probes (e.g., TCP/IP, SMB, HTTP, NTP,
+SNMP, etc.), it is possible to guess the name of the remote operating
+system in use. It is also possible sometimes to guess the version of
+the operating system.","n/a","","
+Remote operating system : Linux Kernel 3.2 on Debian 7.0 (wheezy)
+Debian unstable (sid)
+Debian testing (wheezy)
+Confidence level : 45
+Method : HTTP
+
+ 
+The remote host is running one of these operating systems : 
+Linux Kernel 3.2 on Debian 7.0 (wheezy)
+Debian unstable (sid)
+Debian testing (wheezy)","","","","","","","","","None","","","","2003/12/09","2025/06/03","","",""
+"18261","","","None","192.168.0.109","tcp","0","Apache Banner Linux Distribution Disclosure","The name of the Linux distribution running on the remote host was
+found in the banner of the web server.","Nessus was able to extract the banner of the Apache web server and
+determine which Linux distribution the remote host is running.","If you do not wish to display this information, edit 'httpd.conf' and
+set the directive 'ServerTokens Prod' and restart Apache.","","
+The Linux distribution detected was : 
+ - Debian 7.0 (wheezy)
+ - Debian unstable (sid)
+ - Debian testing (wheezy)
+","","","","","","","","","None","","","","2005/05/15","2025/03/31","","",""
+"19506","","","None","192.168.0.109","tcp","0","Nessus Scan Information","This plugin displays information about the Nessus scan.","This plugin displays, for each tested host, information about the
+scan itself :
+
+  - The version of the plugin set.
+  - The type of scanner (Nessus or Nessus Home).
+  - The version of the Nessus Engine.
+  - The port scanner(s) used.
+  - The port range scanned.
+  - The ping round trip time 
+  - Whether credentialed or third-party patch management
+    checks are possible.
+  - Whether the display of superseded patches is enabled
+  - The date of the scan.
+  - The duration of the scan.
+  - The number of hosts scanned in parallel.
+  - The number of checks done in parallel.","n/a","","Information about this scan : 
+
+Nessus version : 10.9.3
+Nessus build : 20023
+Plugin feed version : 202508200628
+Scanner edition used : Nessus
+
+ERROR: Your plugins have not been updated since 2025/8/20
+Performing a scan with an older plugin set will yield out-of-date results and
+produce an incomplete audit. Please run nessus-update-plugins to get the
+newest vulnerability checks from Nessus.org.
+
+Scanner OS : LINUX
+Scanner distribution : ubuntu1604-x86-64
+Scan type : Normal
+Scan name : SkyTower
+Scan policy used : Advanced Scan
+Scanner IP : 192.168.0.112
+Port scanner(s) : nessus_syn_scanner 
+Port range : 65535
+Ping RTT : 97.036 ms
+Thorough tests : no
+Experimental tests : no
+Scan for Unpatched Vulnerabilities : no
+Plugin debugging enabled : no
+Paranoia level : 1
+Report verbosity : 1
+Safe checks : yes
+Optimize the test : yes
+Credentialed checks : no
+Patch management checks : None
+Display superseded patches : yes (supersedence plugin did not launch)
+CGI scanning : disabled
+Web application tests : disabled
+Max hosts : 100
+Max checks : 5
+Recv timeout : 5
+Backports : Detected
+Allow post-scan editing : Yes
+Nessus Plugin Signature Checking : Enabled
+Audit File Signature Checking : Disabled
+Scan Start Date : 2026/10/6 14:05 UTC 
+Scan duration : 146 sec
+Scan for malware : no
+","","","","","","","","","None","","","","2005/08/26","2025/06/25","","",""
+"24260","","","None","192.168.0.109","tcp","80","HyperText Transfer Protocol (HTTP) Information","Some information about the remote HTTP configuration can be extracted.","This test gives some information about the remote HTTP protocol - the
+version used, whether HTTP Keep-Alive is enabled, etc... 
+
+This test is informational only and does not denote any security
+problem.","n/a","","
+Response Code : HTTP/1.1 200 OK
+
+Protocol version : HTTP/1.1
+HTTP/2 TLS Support: No
+HTTP/2 Cleartext Support: No
+SSL : no
+Keep-Alive : yes
+Options allowed : (Not implemented)
+Headers :
+
+  Date: Tue, 06 Oct 2026 12:56:57 GMT
+  Server: Apache/2.2.22 (Debian)
+  Last-Modified: Fri, 20 Jun 2014 11:23:36 GMT
+  ETag: ""57-470-4fc42b97adc0a""
+  Accept-Ranges: bytes
+  Content-Length: 1136
+  Vary: Accept-Encoding
+  Keep-Alive: timeout=5, max=100
+  Connection: Keep-Alive
+  Content-Type: text/html
+  
+Response Body :
+
+<html>
+	<body>
+
+		<div style=""height:100%; width:100%;background-image:url('background.jpg');
+				background-size:100%;
+			        background-position:50% 50%;
+			        background-repeat:no-repeat;"">
+			<div style=""
+				    background-color:white;	
+	                 	    border-color: #000000;
+	                 	    border-width: 5px;
+	                 	    border-style: solid;
+				    width: 300px;
+	    			    height:180px;
+				    position:absolute;
+	  		            top:50%;
+	  			    left:50%;
+	 			    margin-top:-100px; /* this is half the height of your div*/  
+	  			    margin-left:-100px;
+				"">
+					<form style=""margin: 0 auto;width:250px;"" action='login.php' method='POST'>
+						<br><strong>Skytech Login:</strong><br><br>
+						<label for=""email"" style=""display: inline-block; width: 90px;"" >E-mail:</label>
+						<input name=""email"" type=""text"" size=15 ><br><br>
+						<label for=""password"" style=""display: inline-block; width: 90px;"">Password:</label>
+						<input name=""password"" type=""password"" size=15><br><br>
+						<input type=""submit"" value=""Login"">
+					</form>
+			</div>
+							
+		</div>
+	</body>
+</html>
+","","","","","","","","","None","","","","2007/01/30","2024/02/26","","",""
+"35716","","","None","192.168.0.109","tcp","0","Ethernet Card Manufacturer Detection","The manufacturer can be identified from the Ethernet OUI.","Each ethernet MAC address starts with a 24-bit Organizationally 
+Unique Identifier (OUI). These OUIs are registered by IEEE.","n/a","https://standards.ieee.org/faqs/regauth.html
+http://www.nessus.org/u?794673b4","
+The following card manufacturers were identified :
+
+08:00:27:54:4A:37 : PCS Systemtechnik GmbH
+","","","","","","","","","None","","","","2009/02/19","2020/05/13","","",""
+"39521","","","None","192.168.0.109","tcp","80","Backported Security Patch Detection (WWW)","Security patches are backported.","Security patches may have been 'backported' to the remote HTTP server
+without changing its version number.
+
+Banner-based checks have been disabled to avoid false positives.
+
+Note that this test is informational only and does not denote any
+security problem.","n/a","https://access.redhat.com/security/updates/backporting/?sc_cid=3093","
+Give Nessus credentials to perform local checks.
+","","","","","","","","","None","","","","2009/06/25","2015/07/07","","",""
+"43111","","","None","192.168.0.109","tcp","80","HTTP Methods Allowed (per directory)","This plugin determines which HTTP methods are allowed on various CGI
+directories.","By calling the OPTIONS method, it is possible to determine which HTTP
+methods are allowed on each directory.
+
+The following HTTP methods are considered insecure:
+  PUT, DELETE, CONNECT, TRACE, HEAD
+
+Many frameworks and languages treat 'HEAD' as a 'GET' request, albeit
+one without any body in the response. If a security constraint was
+set on 'GET' requests such that only 'authenticatedUsers' could
+access GET requests for a particular servlet or resource, it would be
+bypassed for the 'HEAD' version. This allowed unauthorized blind
+submission of any privileged GET request.
+
+As this list may be incomplete, the plugin also tests - if 'Thorough
+tests' are enabled or 'Enable web applications tests' is set to 'yes'
+in the scan policy - various known HTTP methods on each directory and
+considers them as unsupported if it receives a response code of 400,
+403, 405, or 501.
+
+Note that the plugin output is only informational and does not
+necessarily indicate the presence of any security vulnerabilities.","n/a","http://www.nessus.org/u?d9c03a9a
+http://www.nessus.org/u?b019cbdb
+https://www.owasp.org/index.php/Test_HTTP_Methods_(OTG-CONFIG-006)","Based on the response to an OPTIONS request :
+
+  - HTTP methods GET HEAD OPTIONS POST are allowed on : 
+
+    /
+
+","","","","","","","","","None","","","","2009/12/10","2022/04/11","","",""
+"45590","","","None","192.168.0.109","tcp","0","Common Platform Enumeration (CPE)","It was possible to enumerate CPE names that matched on the remote
+system.","By using information obtained from a Nessus scan, this plugin reports
+CPE (Common Platform Enumeration) matches for various hardware and
+software products found on a host. 
+
+Note that if an official CPE is not available for the product, this
+plugin computes the best possible CPE based on the information
+available from the scan.","n/a","http://cpe.mitre.org/
+https://nvd.nist.gov/products/cpe","
+Following application CPE's matched on the remote system : 
+
+  cpe:/a:apache:http_server:2.2.22 -> Apache Software Foundation Apache HTTP Server
+  cpe:/a:apache:http_server:2.2.99 -> Apache Software Foundation Apache HTTP Server
+  cpe:/a:squid-cache:squid:3.1.20 -> squid-cache.org Squid
+","","","","","","","","","None","","","","2010/04/21","2025/07/14","","",""
+"48204","","","None","192.168.0.109","tcp","80","Apache HTTP Server Version","It is possible to obtain the version number of the remote Apache HTTP
+server.","The remote host is running the Apache HTTP Server, an open source web
+server. It was possible to read the version number from the banner.","n/a","https://httpd.apache.org/","
+  URL        : http://192.168.0.109/
+  Version    : 2.2.99
+  Source     : Server: Apache/2.2.22 (Debian)
+  backported : 1
+  os         : ConvertedDebian
+","","","","","","","","","None","","IAVT:0001-T-0030;IAVT:0001-T-0530","","2010/07/30","2023/08/17","","",""
+"49692","","","None","192.168.0.109","tcp","8080","Squid Proxy Version Detection","It was possible to obtain the version number of the remote Squid proxy
+server.","The remote host is running the Squid proxy server, an open source
+proxy server. It was possible to read the version number from the
+banner.","n/a","","
+  URL     : http://192.168.0.109:3128/
+  Version : 3.1.20
+  Source  : Server: squid/3.1.20
+","","","","","","","","","None","","","","2010/09/28","2024/06/17","","",""
+"54615","","","None","192.168.0.109","tcp","0","Device Type","It is possible to guess the remote device type.","Based on the remote operating system, it is possible to determine
+what the remote system type is (eg: a printer, router, general-purpose
+computer, etc).","n/a","","Remote device type : general-purpose
+Confidence level : 45
+","","","","","","","","","None","","","","2011/05/23","2025/03/12","","",""
+"86420","","","None","192.168.0.109","tcp","0","Ethernet MAC Addresses","This plugin gathers MAC addresses from various sources and
+consolidates them into a list.","This plugin gathers MAC addresses discovered from both remote probing
+of the host (e.g. SNMP and Netbios) and from running local checks
+(e.g. ifconfig). It then consolidates the MAC addresses into a single,
+unique, and uniform list.","n/a","","The following is a consolidated list of detected MAC addresses:
+  - 08:00:27:54:4A:37
+","","","","","","","","","None","","","","2015/10/16","2025/06/10","","",""
+"88098","CVE-2003-1418","4.3","Medium","192.168.0.109","tcp","80","Apache Server ETag Header Information Disclosure","The remote web server is affected by an information disclosure
+vulnerability.","The remote web server is affected by an information disclosure
+vulnerability due to the ETag header providing sensitive information
+that could aid an attacker, such as the inode number of requested
+files.","Modify the HTTP ETag header of the web server to not include file
+inodes in the ETag header calculation. Refer to the linked Apache
+documentation for more information.","http://httpd.apache.org/docs/2.2/mod/core.html#FileETag","
+Nessus was able to determine that the Apache Server listening on
+port 80 leaks the servers inode numbers in the ETag HTTP
+Header field : 
+
+  Source                 : ETag: ""57-470-4fc42b97adc0a""
+  Inode number           : 87
+  File size              : 1136 bytes
+  File modification time : Jun. 20, 2014 at 11:23:36 GMT
+","","","","5.3","3.2","4.6","","","Medium","6939","CWE:200","","2016/01/22","2025/02/11","","",""
+"135860","","","None","192.168.0.109","tcp","445","WMI Not Available","WMI queries could not be made against the remote host.","WMI (Windows Management Instrumentation) is not available on the
+remote host over DCOM. WMI queries are used to gather information
+about the remote host, such as its current state, network interface
+configuration, etc.
+
+Without this information Nessus may not be able to identify installed
+software or security vunerabilities that exist on the remote host.","n/a","https://docs.microsoft.com/en-us/windows/win32/wmisdk/wmi-start-page","Can't connect to the 'root\CIMV2' WMI namespace.","","","","","","","","","None","","","","2020/04/21","2025/07/21","","",""
+"209654","","","None","192.168.0.109","tcp","0","OS Fingerprints Detected","Multiple OS fingerprints were detected.","Using a combination of remote probes (TCP/IP, SMB, HTTP, NTP, SNMP, etc), 
+it was possible to gather one or more fingerprints from the remote system. 
+While the highest-confidence result was reported in plugin 11936, “OS Identification”, 
+the complete set of fingerprints detected are reported here.","n/a","","
+Following OS Fingerprints were found
+
+Remote operating system : Linux Kernel 3.2 on Debian 7.0 (wheezy)
+Debian unstable (sid)
+Debian testing (wheezy)
+Confidence level : 45
+Method : HTTP
+Type : general-purpose
+Fingerprint : unknown
+","","","","","","","","","None","","","","2025/02/26","2025/03/03","","",""

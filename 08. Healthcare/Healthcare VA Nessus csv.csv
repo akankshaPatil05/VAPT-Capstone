@@ -1,0 +1,2187 @@
+Plugin ID,CVE,CVSS v2.0 Base Score,Risk,Host,Protocol,Port,Name,Synopsis,Description,Solution,See Also,Plugin Output,STIG Severity,CVSS v4.0 Base Score,CVSS v4.0 Base+Threat Score,CVSS v3.0 Base Score,CVSS v2.0 Temporal Score,CVSS v3.0 Temporal Score,VPR Score,EPSS Score,Risk Factor,BID,XREF,MSKB,Plugin Publication Date,Plugin Modification Date,Metasploit,Core Impact,CANVAS
+"10092","","","None","192.168.0.117","tcp","21","FTP Server Detection","An FTP server is listening on a remote port.","It is possible to obtain the banner of the remote FTP server by
+connecting to a remote port.","n/a","","
+The remote FTP banner is :
+
+220 ProFTPD 1.3.3d Server (ProFTPD Default Installation) [192.168.0.117]
+","","","","","","","","","None","","IAVT:0001-T-0030;IAVT:0001-T-0943","","1999/10/12","2023/08/17","","",""
+"10107","","","None","192.168.0.117","tcp","80","HTTP Server Type and Version","A web server is running on the remote host.","This plugin attempts to determine the type and the version of the
+  remote web server.","n/a","","The remote web server type is :
+
+Apache/2.2.17 (PCLinuxOS 2011/PREFORK-1pclos2011)","","","","","","","","","None","","IAVT:0001-T-0931","","2000/01/04","2020/10/30","","",""
+"10114","CVE-1999-0524","2.1","Low","192.168.0.117","icmp","0","ICMP Timestamp Request Remote Date Disclosure","It is possible to determine the exact time set on the remote host.","The remote host answers to an ICMP timestamp request.  This allows an
+attacker to know the date that is set on the targeted machine, which
+may assist an unauthenticated, remote attacker in defeating time-based
+authentication protocols.
+
+Timestamps returned from machines running Windows Vista / 7 / 2008 /
+2008 R2 are deliberately incorrect, but usually within 1000 seconds of
+the actual system time.","Filter out the ICMP timestamp requests (13), and the outgoing ICMP
+timestamp replies (14).","","The difference between the local and remote clocks is 2 seconds.
+","","","","","","","","","Low","","CWE:200","","1999/08/01","2024/10/07","","",""
+"10287","","","None","192.168.0.117","udp","0","Traceroute Information","It was possible to obtain traceroute information.","Makes a traceroute to the remote host.","n/a","","For your information, here is the traceroute from 192.168.0.113 to 192.168.0.117 : 
+192.168.0.113
+192.168.0.117
+
+Hop Count: 1
+","","","","","","","","","None","","","","1999/11/27","2023/12/04","","",""
+"10302","","","None","192.168.0.117","tcp","80","Web Server robots.txt Information Disclosure","The remote web server contains a 'robots.txt' file.","The remote host contains a file named 'robots.txt' that is intended to
+prevent web 'robots' from visiting certain directories in a website for
+maintenance or indexing purposes.  A malicious user may also be able to
+use the contents of this file to learn of sensitive documents or
+directories on the affected site and either retrieve them directly or
+target them for other attacks.","Review the contents of the site's robots.txt file, use Robots META tags
+instead of entries in the robots.txt file, and/or adjust the web
+server's access controls to limit access to sensitive material.","http://www.robotstxt.org/orig.html","Contents of robots.txt :
+
+# $Id: robots.txt 410967 2009-08-06 19:44:54Z oden $
+# $HeadURL: svn+ssh://svn.mandriva.com/svn/packages/cooker/apache-conf/current/SOURCES/robots.txt $
+# exclude help system from robots
+User-agent: *
+Disallow: /manual/
+Disallow: /manual-2.2/
+Disallow: /addon-modules/
+Disallow: /doc/
+Disallow: /images/
+# the next line is a spam bot trap, for grepping the logs. you should _really_ change this to something else...
+Disallow: /all_our_e-mail_addresses
+# same idea here...
+Disallow: /admin/
+# but allow htdig to index our doc-tree
+#User-agent: htdig
+#Disallow:
+# disallow stress test
+user-agent: stress-agent
+Disallow: /
+","","","","","","","","","None","","","","1999/10/12","2018/11/15","","",""
+"11219","","","None","192.168.0.117","tcp","21","Nessus SYN scanner","It is possible to determine which TCP ports are open.","This plugin is a SYN 'half-open' port scanner.  It shall be reasonably
+quick even against a firewalled target. 
+
+Note that SYN scans are less intrusive than TCP (full connect) scans
+against broken services, but they might cause problems for less robust
+firewalls and also leave unclosed connections on the remote target, if
+the network is loaded.","Protect your target with an IP filter.","","Port 21/tcp was found to be open","","","","","","","","","None","","","","2009/02/04","2025/07/14","","",""
+"11219","","","None","192.168.0.117","tcp","80","Nessus SYN scanner","It is possible to determine which TCP ports are open.","This plugin is a SYN 'half-open' port scanner.  It shall be reasonably
+quick even against a firewalled target. 
+
+Note that SYN scans are less intrusive than TCP (full connect) scans
+against broken services, but they might cause problems for less robust
+firewalls and also leave unclosed connections on the remote target, if
+the network is loaded.","Protect your target with an IP filter.","","Port 80/tcp was found to be open","","","","","","","","","None","","","","2009/02/04","2025/07/14","","",""
+"11936","","","None","192.168.0.117","tcp","0","OS Identification","It is possible to guess the remote operating system.","Using a combination of remote probes (e.g., TCP/IP, SMB, HTTP, NTP,
+SNMP, etc.), it is possible to guess the name of the remote operating
+system in use. It is also possible sometimes to guess the version of
+the operating system.","n/a","","
+Remote operating system : Linux Kernel 3.x
+Confidence level : 59
+Method : SinFP
+
+ 
+The remote host is running Linux Kernel 3.x","","","","","","","","","None","","","","2003/12/09","2025/06/03","","",""
+"19506","","","None","192.168.0.117","tcp","0","Nessus Scan Information","This plugin displays information about the Nessus scan.","This plugin displays, for each tested host, information about the
+scan itself :
+
+  - The version of the plugin set.
+  - The type of scanner (Nessus or Nessus Home).
+  - The version of the Nessus Engine.
+  - The port scanner(s) used.
+  - The port range scanned.
+  - The ping round trip time 
+  - Whether credentialed or third-party patch management
+    checks are possible.
+  - Whether the display of superseded patches is enabled
+  - The date of the scan.
+  - The duration of the scan.
+  - The number of hosts scanned in parallel.
+  - The number of checks done in parallel.","n/a","","Information about this scan : 
+
+Nessus version : 10.9.3
+Nessus build : 20023
+Plugin feed version : 202508200628
+Scanner edition used : Nessus
+
+ERROR: Your plugins have not been updated since 2025/8/20
+Performing a scan with an older plugin set will yield out-of-date results and
+produce an incomplete audit. Please run nessus-update-plugins to get the
+newest vulnerability checks from Nessus.org.
+
+Scanner OS : LINUX
+Scanner distribution : ubuntu1604-x86-64
+Scan type : Normal
+Scan name : Healthcare
+Scan policy used : Advanced Scan
+Scanner IP : 192.168.0.113
+Port scanner(s) : nessus_syn_scanner 
+Port range : default
+Ping RTT : 132.987 ms
+Thorough tests : no
+Experimental tests : no
+Scan for Unpatched Vulnerabilities : no
+Plugin debugging enabled : no
+Paranoia level : 1
+Report verbosity : 1
+Safe checks : yes
+Optimize the test : yes
+Credentialed checks : no
+Patch management checks : None
+Display superseded patches : yes (supersedence plugin did not launch)
+CGI scanning : disabled
+Web application tests : disabled
+Max hosts : 100
+Max checks : 5
+Recv timeout : 5
+Backports : None
+Allow post-scan editing : Yes
+Nessus Plugin Signature Checking : Enabled
+Audit File Signature Checking : Disabled
+Scan Start Date : 2026/10/22 16:30 UTC 
+Scan duration : 453 sec
+Scan for malware : no
+","","","","","","","","","None","","","","2005/08/26","2025/06/25","","",""
+"22964","","","None","192.168.0.117","tcp","21","Service Detection","The remote service could be identified.","Nessus was able to identify the remote service by its banner or by
+looking at the error message it sends when it receives an HTTP
+request.","n/a","","An FTP server is running on this port.","","","","","","","","","None","","","","2007/08/19","2024/03/26","","",""
+"22964","","","None","192.168.0.117","tcp","80","Service Detection","The remote service could be identified.","Nessus was able to identify the remote service by its banner or by
+looking at the error message it sends when it receives an HTTP
+request.","n/a","","A web server is running on this port.","","","","","","","","","None","","","","2007/08/19","2024/03/26","","",""
+"24260","","","None","192.168.0.117","tcp","80","HyperText Transfer Protocol (HTTP) Information","Some information about the remote HTTP configuration can be extracted.","This test gives some information about the remote HTTP protocol - the
+version used, whether HTTP Keep-Alive is enabled, etc... 
+
+This test is informational only and does not denote any security
+problem.","n/a","","
+Response Code : HTTP/1.1 200 OK
+
+Protocol version : HTTP/1.1
+HTTP/2 TLS Support: No
+HTTP/2 Cleartext Support: No
+SSL : no
+Keep-Alive : yes
+Options allowed : (Not implemented)
+Headers :
+
+  Date: Thu, 22 Oct 2026 16:31:43 GMT
+  Server: Apache/2.2.17 (PCLinuxOS 2011/PREFORK-1pclos2011)
+  Last-Modified: Sat, 06 Jan 2018 06:21:38 GMT
+  ETag: ""407da-13a7-5621593db2080""
+  Accept-Ranges: bytes
+  Content-Length: 5031
+  Keep-Alive: timeout=5, max=100
+  Connection: Keep-Alive
+  Content-Type: text/html
+  
+Response Body :
+
+<!DOCTYPE html>
+<html lang=""en"">
+<head>
+	<title>Coming Soon 2</title>
+	<meta charset=""UTF-8"">
+	<meta name=""viewport"" content=""width=device-width, initial-scale=1"">
+<!--===============================================================================================-->	
+	<link rel=""icon"" type=""image/png"" href=""images/icons/favicon.ico""/>
+<!--===============================================================================================-->
+	<link rel=""stylesheet"" type=""text/css"" href=""vendor/bootstrap/css/bootstrap.min.css"">
+<!--===============================================================================================-->
+	<link rel=""stylesheet"" type=""text/css"" href=""fonts/font-awesome-4.7.0/css/font-awesome.min.css"">
+<!--===============================================================================================-->
+	<link rel=""stylesheet"" type=""text/css"" href=""vendor/animate/animate.css"">
+<!--===============================================================================================-->
+	<link rel=""stylesheet"" type=""text/css"" href=""vendor/select2/select2.min.css"">
+<!--===============================================================================================-->
+	<link rel=""stylesheet"" type=""text/css"" href=""css/util.css"">
+	<link rel=""stylesheet"" type=""text/css"" href=""css/main.css"">
+<!--===============================================================================================-->
+</head>
+<body>
+	
+	<!--  -->
+	<div class=""simpleslide100"">
+		<div class=""simpleslide100-item bg-img1"" style=""background-image: url('images/bg01.jpg');""></div>
+		<div class=""simpleslide100-item bg-img1"" style=""background-image: url('images/bg02.jpg');""></div>
+		<div class=""simpleslide100-item bg-img1"" style=""background-image: url('images/bg03.jpg');""></div>
+	</div>
+
+	<div class=""size1 overlay1"">
+		<!--  -->
+		<div class=""size1 flex-col-c-m p-l-15 p-r-15 p-t-50 p-b-50"">
+			<h3 class=""l1-txt1 txt-center p-b-25"">
+				Coming Soon
+			</h3>
+
+			<p class=""m2-txt1 txt-center p-b-48"">
+				Our website is under construction, follow us for update now!
+			</p>
+
+			<div class=""flex-w flex-c-m cd100 p-b-33"">
+				<div class=""flex-col-c-m size2 bor1 m-l-15 m-r-15 m-b-20"">
+					<span class=""l2-txt1 p-b-9 days"">35</span>
+					<span class=""s2-txt1"">Days</span>
+				</div>
+
+				<div class=""flex-col-c-m size2 bor1 m-l-15 m-r-15 m-b-20"">
+					<span class=""l2-txt1 p-b-9 hours"">17</span>
+					<span class=""s2-txt1"">Hours</span>
+				</div>
+
+				<div class=""flex-col-c-m size2 bor1 m-l-15 m-r-15 m-b-20"">
+					<span class=""l2-txt1 p-b-9 minutes"">50</span>
+					<span class=""s2-txt1"">Minutes</span>
+				</div>
+
+				<div class=""flex-col-c-m size2 bor1 m-l-15 m-r-15 m-b-20"">
+					<span class=""l2-txt1 p-b-9 seconds"">39</span>
+					<span class=""s2-txt1"">Seconds</span>
+				</div>
+			</div>
+
+			<form class=""w-full flex-w flex-c-m validate-form"">
+
+				<div class=""wrap-input100 validate-input where1"" data-validate = ""Valid email is required: ex@abc.xyz"">
+					<input class=""input100 placeholder0 s2-txt2"" type=""text"" name=""email"" placeholder=""Enter Email Address"">
+					<span class=""focus-input100""></span>
+				</div>
+				
+				
+				<button class=""flex-c-m size3 s2-txt3 how-btn1 trans-04 where1"">
+					Subscribe
+				</button>
+			</form>
+		</div>
+	</div>
+
+
+
+	
+
+<!--===============================================================================================-->	
+	<script src=""vendor/jquery/jquery-3.2.1.min.js""></script>
+<!--===============================================================================================-->
+	<script src=""vendor/bootstrap/js/popper.js""></script>
+	<script src=""vendor/bootstrap/js/bootstrap.min.js""></script>
+<!--===============================================================================================-->
+	<script src=""vendor/select2/select2.min.js""></script>
+<!--===============================================================================================-->
+	<script src=""vendor/countdowntime/moment.min.js""></script>
+	<script src=""vendor/countdowntime/moment-timezone.min.js""></script>
+	<script src=""vendor/countdowntime/moment-timezone-with-data.min.js""></script>
+	<script src=""vendor/countdowntime/countdowntime.js""></script>
+	<script>
+		$('.cd100').countdown100({
+			/*Set Endtime here*/
+			/*Endtime must be > current time*/
+			endtimeYear: 0,
+			endtimeMonth: 0,
+			endtimeDate: 35,
+			endtimeHours: 18,
+			endtimeMinutes: 0,
+			endtimeSeconds: 0,
+			timeZone: """" 
+			// ex:  timeZone: ""America/New_York""
+			//go to "" http://momentjs.com/timezone/ "" to get timezone
+		});
+	</script>
+<!--===============================================================================================-->
+	<script src=""vendor/tilt/tilt.jquery.min.js""></script>
+	<script >
+		$('.js-tilt').tilt({
+			scale: 1.1
+		})
+	</script>
+<!--===============================================================================================-->
+	<script src=""js/main.js""></script>
+
+</body>
+</html>","","","","","","","","","None","","","","2007/01/30","2024/02/26","","",""
+"25220","","","None","192.168.0.117","tcp","0","TCP/IP Timestamps Supported","The remote service implements TCP timestamps.","The remote host implements TCP timestamps, as defined by RFC1323.  A
+side effect of this feature is that the uptime of the remote host can
+sometimes be computed.","n/a","http://www.ietf.org/rfc/rfc1323.txt","","","","","","","","","","None","","","","2007/05/16","2023/10/17","","",""
+"35716","","","None","192.168.0.117","tcp","0","Ethernet Card Manufacturer Detection","The manufacturer can be identified from the Ethernet OUI.","Each ethernet MAC address starts with a 24-bit Organizationally 
+Unique Identifier (OUI). These OUIs are registered by IEEE.","n/a","https://standards.ieee.org/faqs/regauth.html
+http://www.nessus.org/u?794673b4","
+The following card manufacturers were identified :
+
+08:00:27:4D:4A:2E : PCS Systemtechnik GmbH
+","","","","","","","","","None","","","","2009/02/19","2020/05/13","","",""
+"43111","","","None","192.168.0.117","tcp","80","HTTP Methods Allowed (per directory)","This plugin determines which HTTP methods are allowed on various CGI
+directories.","By calling the OPTIONS method, it is possible to determine which HTTP
+methods are allowed on each directory.
+
+The following HTTP methods are considered insecure:
+  PUT, DELETE, CONNECT, TRACE, HEAD
+
+Many frameworks and languages treat 'HEAD' as a 'GET' request, albeit
+one without any body in the response. If a security constraint was
+set on 'GET' requests such that only 'authenticatedUsers' could
+access GET requests for a particular servlet or resource, it would be
+bypassed for the 'HEAD' version. This allowed unauthorized blind
+submission of any privileged GET request.
+
+As this list may be incomplete, the plugin also tests - if 'Thorough
+tests' are enabled or 'Enable web applications tests' is set to 'yes'
+in the scan policy - various known HTTP methods on each directory and
+considers them as unsupported if it receives a response code of 400,
+403, 405, or 501.
+
+Note that the plugin output is only informational and does not
+necessarily indicate the presence of any security vulnerabilities.","n/a","http://www.nessus.org/u?d9c03a9a
+http://www.nessus.org/u?b019cbdb
+https://www.owasp.org/index.php/Test_HTTP_Methods_(OTG-CONFIG-006)","Based on the response to an OPTIONS request :
+
+  - HTTP methods GET HEAD OPTIONS POST are allowed on : 
+
+    /
+
+","","","","","","","","","None","","","","2009/12/10","2022/04/11","","",""
+"45590","","","None","192.168.0.117","tcp","0","Common Platform Enumeration (CPE)","It was possible to enumerate CPE names that matched on the remote
+system.","By using information obtained from a Nessus scan, this plugin reports
+CPE (Common Platform Enumeration) matches for various hardware and
+software products found on a host. 
+
+Note that if an official CPE is not available for the product, this
+plugin computes the best possible CPE based on the information
+available from the scan.","n/a","http://cpe.mitre.org/
+https://nvd.nist.gov/products/cpe","
+The remote operating system matched the following CPE : 
+
+  cpe:/o:linux:linux_kernel -> Linux Kernel
+
+Following application CPE's matched on the remote system : 
+
+  cpe:/a:apache:http_server:2.2.17 -> Apache Software Foundation Apache HTTP Server
+  cpe:/a:jquery:jquery -> jQuery
+  cpe:/a:jquery:jquery:3.2.1 -> jQuery
+","","","","","","","","","None","","","","2010/04/21","2025/07/14","","",""
+"48204","","","None","192.168.0.117","tcp","80","Apache HTTP Server Version","It is possible to obtain the version number of the remote Apache HTTP
+server.","The remote host is running the Apache HTTP Server, an open source web
+server. It was possible to read the version number from the banner.","n/a","https://httpd.apache.org/","
+  URL        : http://192.168.0.117/
+  Version    : 2.2.17
+  Source     : Server: Apache/2.2.17 (PCLinuxOS 2011/PREFORK-1pclos2011)
+  backported : 0
+  os         : PCLinuxOS 2011/PREFORK-1pclos2011
+","","","","","","","","","None","","IAVT:0001-T-0030;IAVT:0001-T-0530","","2010/07/30","2023/08/17","","",""
+"53896","CVE-2011-0419","4.3","Medium","192.168.0.117","tcp","80","Apache 2.2.x < 2.2.18 APR apr_fnmatch DoS","The remote web server may be affected by a denial of service
+vulnerability.","According to its banner, the version of Apache 2.2.x running on the
+remote host is prior to 2.2.18. It is, therefore, affected by a denial
+of service vulnerability due to an error in the apr_fnmatch() function
+of the bundled APR library. 
+
+If mod_autoindex is enabled and has indexed a directory containing
+files whose filenames are long, an attacker can cause high CPU usage
+with a specially crafted request. 
+
+Note that the remote web server may not actually be affected by this
+vulnerability. Nessus did not try to determine whether the affected
+module is in use or to check for the issue itself.","Upgrade to Apache version 2.2.18 or later. Alternatively, ensure that
+the 'IndexOptions' configuration option is set to 'IgnoreClient'.","https://archive.apache.org/dist/httpd/CHANGES_2.2.18
+http://httpd.apache.org/security/vulnerabilities_22.html#2.2.18
+http://securityreason.com/achievement_securityalert/98","
+  Version source    : Server: Apache/2.2.17 (PCLinuxOS 2011/PREFORK-1pclos2011)
+  Installed version : 2.2.17
+  Fixed version     : 2.2.18
+","","","","5.3","3.4","4.8","","","Medium","47820","Secunia:44574","","2011/05/13","2018/06/29","","",""
+"54615","","","None","192.168.0.117","tcp","0","Device Type","It is possible to guess the remote device type.","Based on the remote operating system, it is possible to determine
+what the remote system type is (eg: a printer, router, general-purpose
+computer, etc).","n/a","","Remote device type : general-purpose
+Confidence level : 59
+","","","","","","","","","None","","","","2011/05/23","2025/03/12","","",""
+"56216","CVE-2011-3348","4.3","Medium","192.168.0.117","tcp","80","Apache 2.2.x < 2.2.21 mod_proxy_ajp DoS","The remote web server is affected by a denial of service
+vulnerability.","According to its banner, the version of Apache 2.2.x running on the
+remote host is prior to 2.2.21. It is, therefore, potentially affected
+by a denial of service vulnerability. An error exists in the
+'mod_proxy_ajp' module that can allow specially crafted HTTP requests
+to cause a backend server to temporarily enter an error state. This
+vulnerability only occurs when 'mod_proxy_ajp' is used along with
+'mod_proxy_balancer'.
+
+Note that Nessus did not actually test for the flaws but instead has
+relied on the version in the server's banner.","Upgrade to Apache version 2.2.21 or later.","https://archive.apache.org/dist/httpd/CHANGES_2.2.21
+http://httpd.apache.org/security/vulnerabilities_22.html","
+  Version source    : Server: Apache/2.2.17 (PCLinuxOS 2011/PREFORK-1pclos2011)
+  Installed version : 2.2.17
+  Fixed version     : 2.2.21
+","","","","5.3","3.2","4.6","","","Medium","49616","","","2011/09/16","2018/06/29","","",""
+"57791","CVE-2011-3368","5.0","Medium","192.168.0.117","tcp","80","Apache 2.2.x < 2.2.22 Multiple Vulnerabilities","The remote web server is affected by multiple vulnerabilities.","According to its banner, the version of Apache 2.2.x installed on the
+remote host is prior to 2.2.22. It is, therefore, potentially affected
+by the following vulnerabilities :
+
+  - When configured as a reverse proxy, improper use of the
+    RewriteRule and ProxyPassMatch directives could cause
+    the web server to proxy requests to arbitrary hosts.
+    This could allow a remote attacker to indirectly send
+    requests to intranet servers.
+    (CVE-2011-3368, CVE-2011-4317)
+
+  - A heap-based buffer overflow exists when mod_setenvif
+    module is enabled and both a maliciously crafted 
+    'SetEnvIf' directive and a maliciously crafted HTTP 
+    request header are used. (CVE-2011-3607)
+
+  - A format string handling error can allow the server to
+    be crashed via maliciously crafted cookies.
+    (CVE-2012-0021)
+
+  - An error exists in 'scoreboard.c' that can allow local
+    attackers to crash the server during shutdown.
+    (CVE-2012-0031)
+
+  - An error exists in 'protocol.c' that can allow 
+    'HTTPOnly' cookies to be exposed to attackers through
+    the malicious use of either long or malformed HTTP
+    headers. (CVE-2012-0053)
+
+  - An error in the mod_proxy_ajp module when used to 
+    connect to a backend server that takes an overly long 
+    time to respond could lead to a temporary denial of 
+    service. (CVE-2012-4557)
+
+Note that Nessus did not actually test for these flaws, but instead 
+has relied on the version in the server's banner.","Upgrade to Apache version 2.2.22 or later.","https://archive.apache.org/dist/httpd/CHANGES_2.2.22
+http://httpd.apache.org/security/vulnerabilities_22.html","
+  Version source    : Server: Apache/2.2.17 (PCLinuxOS 2011/PREFORK-1pclos2011)
+  Installed version : 2.2.17
+  Fixed version     : 2.2.22
+","","","","5.3","3.9","4.8","","","Medium","49957;50494;50802;51407;51705;51706;56753","","","2012/02/02","2018/06/29","","",""
+"57791","CVE-2011-3607","5.0","Medium","192.168.0.117","tcp","80","Apache 2.2.x < 2.2.22 Multiple Vulnerabilities","The remote web server is affected by multiple vulnerabilities.","According to its banner, the version of Apache 2.2.x installed on the
+remote host is prior to 2.2.22. It is, therefore, potentially affected
+by the following vulnerabilities :
+
+  - When configured as a reverse proxy, improper use of the
+    RewriteRule and ProxyPassMatch directives could cause
+    the web server to proxy requests to arbitrary hosts.
+    This could allow a remote attacker to indirectly send
+    requests to intranet servers.
+    (CVE-2011-3368, CVE-2011-4317)
+
+  - A heap-based buffer overflow exists when mod_setenvif
+    module is enabled and both a maliciously crafted 
+    'SetEnvIf' directive and a maliciously crafted HTTP 
+    request header are used. (CVE-2011-3607)
+
+  - A format string handling error can allow the server to
+    be crashed via maliciously crafted cookies.
+    (CVE-2012-0021)
+
+  - An error exists in 'scoreboard.c' that can allow local
+    attackers to crash the server during shutdown.
+    (CVE-2012-0031)
+
+  - An error exists in 'protocol.c' that can allow 
+    'HTTPOnly' cookies to be exposed to attackers through
+    the malicious use of either long or malformed HTTP
+    headers. (CVE-2012-0053)
+
+  - An error in the mod_proxy_ajp module when used to 
+    connect to a backend server that takes an overly long 
+    time to respond could lead to a temporary denial of 
+    service. (CVE-2012-4557)
+
+Note that Nessus did not actually test for these flaws, but instead 
+has relied on the version in the server's banner.","Upgrade to Apache version 2.2.22 or later.","https://archive.apache.org/dist/httpd/CHANGES_2.2.22
+http://httpd.apache.org/security/vulnerabilities_22.html","
+  Version source    : Server: Apache/2.2.17 (PCLinuxOS 2011/PREFORK-1pclos2011)
+  Installed version : 2.2.17
+  Fixed version     : 2.2.22
+","","","","5.3","3.9","4.8","","","Medium","49957;50494;50802;51407;51705;51706;56753","","","2012/02/02","2018/06/29","","",""
+"57791","CVE-2011-4317","5.0","Medium","192.168.0.117","tcp","80","Apache 2.2.x < 2.2.22 Multiple Vulnerabilities","The remote web server is affected by multiple vulnerabilities.","According to its banner, the version of Apache 2.2.x installed on the
+remote host is prior to 2.2.22. It is, therefore, potentially affected
+by the following vulnerabilities :
+
+  - When configured as a reverse proxy, improper use of the
+    RewriteRule and ProxyPassMatch directives could cause
+    the web server to proxy requests to arbitrary hosts.
+    This could allow a remote attacker to indirectly send
+    requests to intranet servers.
+    (CVE-2011-3368, CVE-2011-4317)
+
+  - A heap-based buffer overflow exists when mod_setenvif
+    module is enabled and both a maliciously crafted 
+    'SetEnvIf' directive and a maliciously crafted HTTP 
+    request header are used. (CVE-2011-3607)
+
+  - A format string handling error can allow the server to
+    be crashed via maliciously crafted cookies.
+    (CVE-2012-0021)
+
+  - An error exists in 'scoreboard.c' that can allow local
+    attackers to crash the server during shutdown.
+    (CVE-2012-0031)
+
+  - An error exists in 'protocol.c' that can allow 
+    'HTTPOnly' cookies to be exposed to attackers through
+    the malicious use of either long or malformed HTTP
+    headers. (CVE-2012-0053)
+
+  - An error in the mod_proxy_ajp module when used to 
+    connect to a backend server that takes an overly long 
+    time to respond could lead to a temporary denial of 
+    service. (CVE-2012-4557)
+
+Note that Nessus did not actually test for these flaws, but instead 
+has relied on the version in the server's banner.","Upgrade to Apache version 2.2.22 or later.","https://archive.apache.org/dist/httpd/CHANGES_2.2.22
+http://httpd.apache.org/security/vulnerabilities_22.html","
+  Version source    : Server: Apache/2.2.17 (PCLinuxOS 2011/PREFORK-1pclos2011)
+  Installed version : 2.2.17
+  Fixed version     : 2.2.22
+","","","","5.3","3.9","4.8","","","Medium","49957;50494;50802;51407;51705;51706;56753","","","2012/02/02","2018/06/29","","",""
+"57791","CVE-2012-0021","5.0","Medium","192.168.0.117","tcp","80","Apache 2.2.x < 2.2.22 Multiple Vulnerabilities","The remote web server is affected by multiple vulnerabilities.","According to its banner, the version of Apache 2.2.x installed on the
+remote host is prior to 2.2.22. It is, therefore, potentially affected
+by the following vulnerabilities :
+
+  - When configured as a reverse proxy, improper use of the
+    RewriteRule and ProxyPassMatch directives could cause
+    the web server to proxy requests to arbitrary hosts.
+    This could allow a remote attacker to indirectly send
+    requests to intranet servers.
+    (CVE-2011-3368, CVE-2011-4317)
+
+  - A heap-based buffer overflow exists when mod_setenvif
+    module is enabled and both a maliciously crafted 
+    'SetEnvIf' directive and a maliciously crafted HTTP 
+    request header are used. (CVE-2011-3607)
+
+  - A format string handling error can allow the server to
+    be crashed via maliciously crafted cookies.
+    (CVE-2012-0021)
+
+  - An error exists in 'scoreboard.c' that can allow local
+    attackers to crash the server during shutdown.
+    (CVE-2012-0031)
+
+  - An error exists in 'protocol.c' that can allow 
+    'HTTPOnly' cookies to be exposed to attackers through
+    the malicious use of either long or malformed HTTP
+    headers. (CVE-2012-0053)
+
+  - An error in the mod_proxy_ajp module when used to 
+    connect to a backend server that takes an overly long 
+    time to respond could lead to a temporary denial of 
+    service. (CVE-2012-4557)
+
+Note that Nessus did not actually test for these flaws, but instead 
+has relied on the version in the server's banner.","Upgrade to Apache version 2.2.22 or later.","https://archive.apache.org/dist/httpd/CHANGES_2.2.22
+http://httpd.apache.org/security/vulnerabilities_22.html","
+  Version source    : Server: Apache/2.2.17 (PCLinuxOS 2011/PREFORK-1pclos2011)
+  Installed version : 2.2.17
+  Fixed version     : 2.2.22
+","","","","5.3","3.9","4.8","","","Medium","49957;50494;50802;51407;51705;51706;56753","","","2012/02/02","2018/06/29","","",""
+"57791","CVE-2012-0031","5.0","Medium","192.168.0.117","tcp","80","Apache 2.2.x < 2.2.22 Multiple Vulnerabilities","The remote web server is affected by multiple vulnerabilities.","According to its banner, the version of Apache 2.2.x installed on the
+remote host is prior to 2.2.22. It is, therefore, potentially affected
+by the following vulnerabilities :
+
+  - When configured as a reverse proxy, improper use of the
+    RewriteRule and ProxyPassMatch directives could cause
+    the web server to proxy requests to arbitrary hosts.
+    This could allow a remote attacker to indirectly send
+    requests to intranet servers.
+    (CVE-2011-3368, CVE-2011-4317)
+
+  - A heap-based buffer overflow exists when mod_setenvif
+    module is enabled and both a maliciously crafted 
+    'SetEnvIf' directive and a maliciously crafted HTTP 
+    request header are used. (CVE-2011-3607)
+
+  - A format string handling error can allow the server to
+    be crashed via maliciously crafted cookies.
+    (CVE-2012-0021)
+
+  - An error exists in 'scoreboard.c' that can allow local
+    attackers to crash the server during shutdown.
+    (CVE-2012-0031)
+
+  - An error exists in 'protocol.c' that can allow 
+    'HTTPOnly' cookies to be exposed to attackers through
+    the malicious use of either long or malformed HTTP
+    headers. (CVE-2012-0053)
+
+  - An error in the mod_proxy_ajp module when used to 
+    connect to a backend server that takes an overly long 
+    time to respond could lead to a temporary denial of 
+    service. (CVE-2012-4557)
+
+Note that Nessus did not actually test for these flaws, but instead 
+has relied on the version in the server's banner.","Upgrade to Apache version 2.2.22 or later.","https://archive.apache.org/dist/httpd/CHANGES_2.2.22
+http://httpd.apache.org/security/vulnerabilities_22.html","
+  Version source    : Server: Apache/2.2.17 (PCLinuxOS 2011/PREFORK-1pclos2011)
+  Installed version : 2.2.17
+  Fixed version     : 2.2.22
+","","","","5.3","3.9","4.8","","","Medium","49957;50494;50802;51407;51705;51706;56753","","","2012/02/02","2018/06/29","","",""
+"57791","CVE-2012-0053","5.0","Medium","192.168.0.117","tcp","80","Apache 2.2.x < 2.2.22 Multiple Vulnerabilities","The remote web server is affected by multiple vulnerabilities.","According to its banner, the version of Apache 2.2.x installed on the
+remote host is prior to 2.2.22. It is, therefore, potentially affected
+by the following vulnerabilities :
+
+  - When configured as a reverse proxy, improper use of the
+    RewriteRule and ProxyPassMatch directives could cause
+    the web server to proxy requests to arbitrary hosts.
+    This could allow a remote attacker to indirectly send
+    requests to intranet servers.
+    (CVE-2011-3368, CVE-2011-4317)
+
+  - A heap-based buffer overflow exists when mod_setenvif
+    module is enabled and both a maliciously crafted 
+    'SetEnvIf' directive and a maliciously crafted HTTP 
+    request header are used. (CVE-2011-3607)
+
+  - A format string handling error can allow the server to
+    be crashed via maliciously crafted cookies.
+    (CVE-2012-0021)
+
+  - An error exists in 'scoreboard.c' that can allow local
+    attackers to crash the server during shutdown.
+    (CVE-2012-0031)
+
+  - An error exists in 'protocol.c' that can allow 
+    'HTTPOnly' cookies to be exposed to attackers through
+    the malicious use of either long or malformed HTTP
+    headers. (CVE-2012-0053)
+
+  - An error in the mod_proxy_ajp module when used to 
+    connect to a backend server that takes an overly long 
+    time to respond could lead to a temporary denial of 
+    service. (CVE-2012-4557)
+
+Note that Nessus did not actually test for these flaws, but instead 
+has relied on the version in the server's banner.","Upgrade to Apache version 2.2.22 or later.","https://archive.apache.org/dist/httpd/CHANGES_2.2.22
+http://httpd.apache.org/security/vulnerabilities_22.html","
+  Version source    : Server: Apache/2.2.17 (PCLinuxOS 2011/PREFORK-1pclos2011)
+  Installed version : 2.2.17
+  Fixed version     : 2.2.22
+","","","","5.3","3.9","4.8","","","Medium","49957;50494;50802;51407;51705;51706;56753","","","2012/02/02","2018/06/29","","",""
+"57791","CVE-2012-4557","5.0","Medium","192.168.0.117","tcp","80","Apache 2.2.x < 2.2.22 Multiple Vulnerabilities","The remote web server is affected by multiple vulnerabilities.","According to its banner, the version of Apache 2.2.x installed on the
+remote host is prior to 2.2.22. It is, therefore, potentially affected
+by the following vulnerabilities :
+
+  - When configured as a reverse proxy, improper use of the
+    RewriteRule and ProxyPassMatch directives could cause
+    the web server to proxy requests to arbitrary hosts.
+    This could allow a remote attacker to indirectly send
+    requests to intranet servers.
+    (CVE-2011-3368, CVE-2011-4317)
+
+  - A heap-based buffer overflow exists when mod_setenvif
+    module is enabled and both a maliciously crafted 
+    'SetEnvIf' directive and a maliciously crafted HTTP 
+    request header are used. (CVE-2011-3607)
+
+  - A format string handling error can allow the server to
+    be crashed via maliciously crafted cookies.
+    (CVE-2012-0021)
+
+  - An error exists in 'scoreboard.c' that can allow local
+    attackers to crash the server during shutdown.
+    (CVE-2012-0031)
+
+  - An error exists in 'protocol.c' that can allow 
+    'HTTPOnly' cookies to be exposed to attackers through
+    the malicious use of either long or malformed HTTP
+    headers. (CVE-2012-0053)
+
+  - An error in the mod_proxy_ajp module when used to 
+    connect to a backend server that takes an overly long 
+    time to respond could lead to a temporary denial of 
+    service. (CVE-2012-4557)
+
+Note that Nessus did not actually test for these flaws, but instead 
+has relied on the version in the server's banner.","Upgrade to Apache version 2.2.22 or later.","https://archive.apache.org/dist/httpd/CHANGES_2.2.22
+http://httpd.apache.org/security/vulnerabilities_22.html","
+  Version source    : Server: Apache/2.2.17 (PCLinuxOS 2011/PREFORK-1pclos2011)
+  Installed version : 2.2.17
+  Fixed version     : 2.2.22
+","","","","5.3","3.9","4.8","","","Medium","49957;50494;50802;51407;51705;51706;56753","","","2012/02/02","2018/06/29","","",""
+"62101","CVE-2012-0883","6.9","Medium","192.168.0.117","tcp","80","Apache 2.2.x < 2.2.23 Multiple Vulnerabilities","The remote web server is affected by multiple vulnerabilities.","According to its banner, the version of Apache 2.2.x running on the
+remote host is prior to 2.2.23. It is, therefore, potentially affected
+by the following vulnerabilities :
+
+  - The utility 'apachectl' can receive a zero-length
+    directory name in the LD_LIBRARY_PATH via the 'envvars'
+    file. A local attacker with access to that utility
+    could exploit this to load a malicious Dynamic Shared
+    Object (DSO), leading to arbitrary code execution.
+    (CVE-2012-0883)
+
+  - An input validation error exists related to
+    'mod_negotiation', 'Multiviews' and untrusted uploads
+    that can allow cross-site scripting attacks.
+    (CVE-2012-2687)
+
+Note that Nessus has not tested for these flaws but has instead relied
+on the version in the server's banner.","Upgrade to Apache version 2.2.23 or later.","https://archive.apache.org/dist/httpd/CHANGES_2.2.23
+http://httpd.apache.org/security/vulnerabilities_22.html","
+  Version source    : Server: Apache/2.2.17 (PCLinuxOS 2011/PREFORK-1pclos2011)
+  Installed version : 2.2.17
+  Fixed version     : 2.2.23
+","","","","7.0","5.1","6.1","","","Medium","53046;55131","CWE:20;CWE:74;CWE:79;CWE:442;CWE:629;CWE:711;CWE:712;CWE:722;CWE:725;CWE:750;CWE:751;CWE:800;CWE:801;CWE:809;CWE:811;CWE:864;CWE:900;CWE:928;CWE:931;CWE:990","","2012/09/14","2018/06/29","","",""
+"62101","CVE-2012-2687","6.9","Medium","192.168.0.117","tcp","80","Apache 2.2.x < 2.2.23 Multiple Vulnerabilities","The remote web server is affected by multiple vulnerabilities.","According to its banner, the version of Apache 2.2.x running on the
+remote host is prior to 2.2.23. It is, therefore, potentially affected
+by the following vulnerabilities :
+
+  - The utility 'apachectl' can receive a zero-length
+    directory name in the LD_LIBRARY_PATH via the 'envvars'
+    file. A local attacker with access to that utility
+    could exploit this to load a malicious Dynamic Shared
+    Object (DSO), leading to arbitrary code execution.
+    (CVE-2012-0883)
+
+  - An input validation error exists related to
+    'mod_negotiation', 'Multiviews' and untrusted uploads
+    that can allow cross-site scripting attacks.
+    (CVE-2012-2687)
+
+Note that Nessus has not tested for these flaws but has instead relied
+on the version in the server's banner.","Upgrade to Apache version 2.2.23 or later.","https://archive.apache.org/dist/httpd/CHANGES_2.2.23
+http://httpd.apache.org/security/vulnerabilities_22.html","
+  Version source    : Server: Apache/2.2.17 (PCLinuxOS 2011/PREFORK-1pclos2011)
+  Installed version : 2.2.17
+  Fixed version     : 2.2.23
+","","","","7.0","5.1","6.1","","","Medium","53046;55131","CWE:20;CWE:74;CWE:79;CWE:442;CWE:629;CWE:711;CWE:712;CWE:722;CWE:725;CWE:750;CWE:751;CWE:800;CWE:801;CWE:809;CWE:811;CWE:864;CWE:900;CWE:928;CWE:931;CWE:990","","2012/09/14","2018/06/29","","",""
+"64912","CVE-2012-3499","4.3","Medium","192.168.0.117","tcp","80","Apache 2.2.x < 2.2.24 Multiple XSS Vulnerabilities","The remote web server is affected by multiple cross-site scripting
+vulnerabilities.","According to its banner, the version of Apache 2.2.x running on the
+remote host is prior to 2.2.24. It is, therefore, potentially affected
+by the following cross-site scripting vulnerabilities :
+
+  - Errors exist related to the modules mod_info,
+    mod_status, mod_imagemap, mod_ldap, and mod_proxy_ftp
+    and unescaped hostnames and URIs that could allow cross-
+    site scripting attacks. (CVE-2012-3499)
+
+  - An error exists related to the mod_proxy_balancer
+    module's manager interface that could allow cross-site
+    scripting attacks. (CVE-2012-4558)
+
+Note that Nessus did not actually test for these issues, but instead
+has relied on the version in the server's banner.","Upgrade to Apache version 2.2.24 or later. Alternatively, ensure that
+the affected modules are not in use.","https://archive.apache.org/dist/httpd/CHANGES_2.2.24
+http://httpd.apache.org/security/vulnerabilities_22.html","
+  Version source    : Server: Apache/2.2.17 (PCLinuxOS 2011/PREFORK-1pclos2011)
+  Installed version : 2.2.17
+  Fixed version     : 2.2.24
+","","","","5.3","3.2","4.6","","","Medium","58165","CWE:20;CWE:74;CWE:79;CWE:442;CWE:629;CWE:711;CWE:712;CWE:722;CWE:725;CWE:750;CWE:751;CWE:800;CWE:801;CWE:809;CWE:811;CWE:864;CWE:900;CWE:928;CWE:931;CWE:990","","2013/02/27","2018/06/29","","",""
+"64912","CVE-2012-4558","4.3","Medium","192.168.0.117","tcp","80","Apache 2.2.x < 2.2.24 Multiple XSS Vulnerabilities","The remote web server is affected by multiple cross-site scripting
+vulnerabilities.","According to its banner, the version of Apache 2.2.x running on the
+remote host is prior to 2.2.24. It is, therefore, potentially affected
+by the following cross-site scripting vulnerabilities :
+
+  - Errors exist related to the modules mod_info,
+    mod_status, mod_imagemap, mod_ldap, and mod_proxy_ftp
+    and unescaped hostnames and URIs that could allow cross-
+    site scripting attacks. (CVE-2012-3499)
+
+  - An error exists related to the mod_proxy_balancer
+    module's manager interface that could allow cross-site
+    scripting attacks. (CVE-2012-4558)
+
+Note that Nessus did not actually test for these issues, but instead
+has relied on the version in the server's banner.","Upgrade to Apache version 2.2.24 or later. Alternatively, ensure that
+the affected modules are not in use.","https://archive.apache.org/dist/httpd/CHANGES_2.2.24
+http://httpd.apache.org/security/vulnerabilities_22.html","
+  Version source    : Server: Apache/2.2.17 (PCLinuxOS 2011/PREFORK-1pclos2011)
+  Installed version : 2.2.17
+  Fixed version     : 2.2.24
+","","","","5.3","3.2","4.6","","","Medium","58165","CWE:20;CWE:74;CWE:79;CWE:442;CWE:629;CWE:711;CWE:712;CWE:722;CWE:725;CWE:750;CWE:751;CWE:800;CWE:801;CWE:809;CWE:811;CWE:864;CWE:900;CWE:928;CWE:931;CWE:990","","2013/02/27","2018/06/29","","",""
+"66334","","","None","192.168.0.117","tcp","0","Patch Report","The remote host is missing several patches.","The remote host is missing one or more security patches. This plugin lists the newest version of each patch to install 
+to make sure the remote host is up-to-date.
+
+Note: Because the 'Show missing patches that have been superseded' setting in your scan policy depends on this plugin,
+it will always run and cannot be disabled.","Install the patches listed below.","","
+
+. You need to take the following 2 actions :
+
+
+[ Apache 2.4.x < 2.4.65 (242629) ]
+
++ Action to take : Upgrade to Apache version 2.4.65 or later.
+
++Impact : Taking this action will resolve 54 different vulnerabilities (CVEs).
+
+
+
+[ JQuery 1.2 < 3.5.0 Multiple XSS (136929) ]
+
++ Action to take : Upgrade to JQuery version 3.5.0 or later.
+
+
+","","","","","","","","","None","","","","2013/07/08","2025/08/12","","",""
+"66717","","","None","192.168.0.117","udp","5353","mDNS Detection (Local Network)","It is possible to obtain information about the remote host.","The remote service understands the Bonjour (also known as ZeroConf or
+mDNS) protocol, which allows anyone to uncover information from the
+remote host such as its operating system type and exact version, its
+hostname, and the list of services it is running. 
+
+This plugin attempts to discover mDNS used by hosts residing on the same
+network segment as Nessus.","Filter incoming traffic to UDP port 5353, if desired.","","Nessus was able to extract the following information :
+
+  - mDNS hostname       : linux.local.
+
+  - Advertised services :
+    o Service name      : linux [08:00:27:4d:4a:2e]._workstation._tcp.local.
+      Port number       : 9
+    o Service name      : Ftp server on linux._ftp._tcp.local.
+      Port number       : 22
+    o Service name      : Ftp server on linux._ftp._tcp.local.
+      Port number       : 22
+    o Service name      : linux._sftp-ssh._tcp.local.
+      Port number       : 22
+    o Service name      : Remote Access on linux._sftp-ssh._tcp.local.
+      Port number       : 22
+
+","","","","","","","","","None","","","","2013/05/31","2013/05/31","","",""
+"68915","CVE-2013-1862","5.1","Medium","192.168.0.117","tcp","80","Apache 2.2.x < 2.2.25 Multiple Vulnerabilities","The remote web server may be affected by multiple cross-site scripting
+vulnerabilities.","According to its banner, the version of Apache 2.2.x running on the
+remote host is prior to 2.2.25. It is, therefore, potentially affected
+by the following vulnerabilities :
+
+  - A flaw exists in the 'RewriteLog' function where it
+    fails to sanitize escape sequences from being written
+    to log files, making it potentially vulnerable to
+    arbitrary command execution. (CVE-2013-1862)
+
+  - A denial of service vulnerability exists relating to
+    the 'mod_dav' module as it relates to MERGE requests.
+    (CVE-2013-1896)
+
+Note that Nessus did not actually test for these issues, but instead
+has relied on the version in the server's banner.","Upgrade to Apache version 2.2.25 or later. Alternatively, ensure that
+the affected modules are not in use.","https://archive.apache.org/dist/httpd/CHANGES_2.2.25
+http://httpd.apache.org/security/vulnerabilities_22.html
+http://www.nessus.org/u?f050c342","
+  Version source    : Server: Apache/2.2.17 (PCLinuxOS 2011/PREFORK-1pclos2011)
+  Installed version : 2.2.17
+  Fixed version     : 2.2.25
+","","","","5.6","3.8","4.9","","","Medium","59826;61129","","","2013/07/16","2018/06/29","","",""
+"68915","CVE-2013-1896","5.1","Medium","192.168.0.117","tcp","80","Apache 2.2.x < 2.2.25 Multiple Vulnerabilities","The remote web server may be affected by multiple cross-site scripting
+vulnerabilities.","According to its banner, the version of Apache 2.2.x running on the
+remote host is prior to 2.2.25. It is, therefore, potentially affected
+by the following vulnerabilities :
+
+  - A flaw exists in the 'RewriteLog' function where it
+    fails to sanitize escape sequences from being written
+    to log files, making it potentially vulnerable to
+    arbitrary command execution. (CVE-2013-1862)
+
+  - A denial of service vulnerability exists relating to
+    the 'mod_dav' module as it relates to MERGE requests.
+    (CVE-2013-1896)
+
+Note that Nessus did not actually test for these issues, but instead
+has relied on the version in the server's banner.","Upgrade to Apache version 2.2.25 or later. Alternatively, ensure that
+the affected modules are not in use.","https://archive.apache.org/dist/httpd/CHANGES_2.2.25
+http://httpd.apache.org/security/vulnerabilities_22.html
+http://www.nessus.org/u?f050c342","
+  Version source    : Server: Apache/2.2.17 (PCLinuxOS 2011/PREFORK-1pclos2011)
+  Installed version : 2.2.17
+  Fixed version     : 2.2.25
+","","","","5.6","3.8","4.9","","","Medium","59826;61129","","","2013/07/16","2018/06/29","","",""
+"73405","CVE-2013-6438","5.0","Medium","192.168.0.117","tcp","80","Apache 2.2.x < 2.2.27 Multiple Vulnerabilities","The remote web server is affected by multiple vulnerabilities.","According to its banner, the version of Apache 2.2.x running on the
+remote host is a version prior to 2.2.27. It is, therefore,
+potentially affected by the following vulnerabilities :
+
+  - A flaw exists with the 'mod_dav' module that is caused
+    when tracking the length of CDATA that has leading white
+    space. A remote attacker with a specially crafted DAV
+    WRITE request can cause the service to stop responding.
+    (CVE-2013-6438)
+
+  - A flaw exists in 'mod_log_config' module that is caused
+    when logging a cookie that has an unassigned value. A
+    remote attacker with a specially crafted request can
+    cause the service to crash. (CVE-2014-0098)
+
+Note that Nessus did not actually test for these issues, but instead
+has relied on the version in the server's banner.","Upgrade to Apache version 2.2.27 or later. Alternatively, ensure that
+the affected modules are not in use.","https://archive.apache.org/dist/httpd/CHANGES_2.2.27
+http://httpd.apache.org/security/vulnerabilities_22.html","
+  Version source    : Server: Apache/2.2.17 (PCLinuxOS 2011/PREFORK-1pclos2011)
+  Installed version : 2.2.17
+  Fixed version     : 2.2.27
+","","","","5.3","3.7","4.6","","","Medium","66303","","","2014/04/08","2018/09/17","","",""
+"73405","CVE-2014-0098","5.0","Medium","192.168.0.117","tcp","80","Apache 2.2.x < 2.2.27 Multiple Vulnerabilities","The remote web server is affected by multiple vulnerabilities.","According to its banner, the version of Apache 2.2.x running on the
+remote host is a version prior to 2.2.27. It is, therefore,
+potentially affected by the following vulnerabilities :
+
+  - A flaw exists with the 'mod_dav' module that is caused
+    when tracking the length of CDATA that has leading white
+    space. A remote attacker with a specially crafted DAV
+    WRITE request can cause the service to stop responding.
+    (CVE-2013-6438)
+
+  - A flaw exists in 'mod_log_config' module that is caused
+    when logging a cookie that has an unassigned value. A
+    remote attacker with a specially crafted request can
+    cause the service to crash. (CVE-2014-0098)
+
+Note that Nessus did not actually test for these issues, but instead
+has relied on the version in the server's banner.","Upgrade to Apache version 2.2.27 or later. Alternatively, ensure that
+the affected modules are not in use.","https://archive.apache.org/dist/httpd/CHANGES_2.2.27
+http://httpd.apache.org/security/vulnerabilities_22.html","
+  Version source    : Server: Apache/2.2.17 (PCLinuxOS 2011/PREFORK-1pclos2011)
+  Installed version : 2.2.17
+  Fixed version     : 2.2.27
+","","","","5.3","3.7","4.6","","","Medium","66303","","","2014/04/08","2018/09/17","","",""
+"77531","CVE-2013-5704","6.8","Medium","192.168.0.117","tcp","80","Apache 2.2.x < 2.2.28 Multiple Vulnerabilities","The remote web server is affected by multiple vulnerabilities.","According to its banner, the version of Apache 2.2.x running on the
+remote host is prior to 2.2.28. It is, therefore, affected by the
+following vulnerabilities :
+
+  - A flaw exists within the 'mod_headers' module which
+    allows a remote attacker to inject arbitrary headers.
+    This is done by placing a header in the trailer portion
+    of data being sent using chunked transfer encoding.
+    (CVE-2013-5704)
+
+  - A flaw exists within the 'mod_deflate' module when
+    handling highly compressed bodies. Using a specially
+    crafted request, a remote attacker can exploit this to
+    cause a denial of service by exhausting memory and CPU
+    resources. (CVE-2014-0118)
+
+  - The 'mod_status' module contains a race condition that
+    can be triggered when handling the scoreboard. A remote
+    attacker can exploit this to cause a denial of service,
+    execute arbitrary code, or obtain sensitive credential
+    information. (CVE-2014-0226)
+
+  - The 'mod_cgid' module lacks a time out mechanism. Using
+    a specially crafted request, a remote attacker can use
+    this flaw to cause a denial of service by causing child
+    processes to linger indefinitely, eventually filling up
+    the scoreboard. (CVE-2014-0231)
+
+Note that Nessus has not tested for these issues but has instead
+relied only on the application's self-reported version number.","Upgrade to Apache version 2.2.29 or later.
+
+Note that version 2.2.28 was never officially released.","https://www.zerodayinitiative.com/advisories/ZDI-14-236/
+https://archive.apache.org/dist/httpd/CHANGES_2.2.29
+http://httpd.apache.org/security/vulnerabilities_22.html
+http://swende.se/blog/HTTPChunked.html","
+  Version source    : Server: Apache/2.2.17 (PCLinuxOS 2011/PREFORK-1pclos2011)
+  Installed version : 2.2.17
+  Fixed version     : 2.2.29
+","","","","7.3","5.3","6.6","","","Medium","66550;68678;68742;68745","EDB-ID:34133","","2014/09/04","2020/04/27","","",""
+"77531","CVE-2014-0118","6.8","Medium","192.168.0.117","tcp","80","Apache 2.2.x < 2.2.28 Multiple Vulnerabilities","The remote web server is affected by multiple vulnerabilities.","According to its banner, the version of Apache 2.2.x running on the
+remote host is prior to 2.2.28. It is, therefore, affected by the
+following vulnerabilities :
+
+  - A flaw exists within the 'mod_headers' module which
+    allows a remote attacker to inject arbitrary headers.
+    This is done by placing a header in the trailer portion
+    of data being sent using chunked transfer encoding.
+    (CVE-2013-5704)
+
+  - A flaw exists within the 'mod_deflate' module when
+    handling highly compressed bodies. Using a specially
+    crafted request, a remote attacker can exploit this to
+    cause a denial of service by exhausting memory and CPU
+    resources. (CVE-2014-0118)
+
+  - The 'mod_status' module contains a race condition that
+    can be triggered when handling the scoreboard. A remote
+    attacker can exploit this to cause a denial of service,
+    execute arbitrary code, or obtain sensitive credential
+    information. (CVE-2014-0226)
+
+  - The 'mod_cgid' module lacks a time out mechanism. Using
+    a specially crafted request, a remote attacker can use
+    this flaw to cause a denial of service by causing child
+    processes to linger indefinitely, eventually filling up
+    the scoreboard. (CVE-2014-0231)
+
+Note that Nessus has not tested for these issues but has instead
+relied only on the application's self-reported version number.","Upgrade to Apache version 2.2.29 or later.
+
+Note that version 2.2.28 was never officially released.","https://www.zerodayinitiative.com/advisories/ZDI-14-236/
+https://archive.apache.org/dist/httpd/CHANGES_2.2.29
+http://httpd.apache.org/security/vulnerabilities_22.html
+http://swende.se/blog/HTTPChunked.html","
+  Version source    : Server: Apache/2.2.17 (PCLinuxOS 2011/PREFORK-1pclos2011)
+  Installed version : 2.2.17
+  Fixed version     : 2.2.29
+","","","","7.3","5.3","6.6","","","Medium","66550;68678;68742;68745","EDB-ID:34133","","2014/09/04","2020/04/27","","",""
+"77531","CVE-2014-0226","6.8","Medium","192.168.0.117","tcp","80","Apache 2.2.x < 2.2.28 Multiple Vulnerabilities","The remote web server is affected by multiple vulnerabilities.","According to its banner, the version of Apache 2.2.x running on the
+remote host is prior to 2.2.28. It is, therefore, affected by the
+following vulnerabilities :
+
+  - A flaw exists within the 'mod_headers' module which
+    allows a remote attacker to inject arbitrary headers.
+    This is done by placing a header in the trailer portion
+    of data being sent using chunked transfer encoding.
+    (CVE-2013-5704)
+
+  - A flaw exists within the 'mod_deflate' module when
+    handling highly compressed bodies. Using a specially
+    crafted request, a remote attacker can exploit this to
+    cause a denial of service by exhausting memory and CPU
+    resources. (CVE-2014-0118)
+
+  - The 'mod_status' module contains a race condition that
+    can be triggered when handling the scoreboard. A remote
+    attacker can exploit this to cause a denial of service,
+    execute arbitrary code, or obtain sensitive credential
+    information. (CVE-2014-0226)
+
+  - The 'mod_cgid' module lacks a time out mechanism. Using
+    a specially crafted request, a remote attacker can use
+    this flaw to cause a denial of service by causing child
+    processes to linger indefinitely, eventually filling up
+    the scoreboard. (CVE-2014-0231)
+
+Note that Nessus has not tested for these issues but has instead
+relied only on the application's self-reported version number.","Upgrade to Apache version 2.2.29 or later.
+
+Note that version 2.2.28 was never officially released.","https://www.zerodayinitiative.com/advisories/ZDI-14-236/
+https://archive.apache.org/dist/httpd/CHANGES_2.2.29
+http://httpd.apache.org/security/vulnerabilities_22.html
+http://swende.se/blog/HTTPChunked.html","
+  Version source    : Server: Apache/2.2.17 (PCLinuxOS 2011/PREFORK-1pclos2011)
+  Installed version : 2.2.17
+  Fixed version     : 2.2.29
+","","","","7.3","5.3","6.6","","","Medium","66550;68678;68742;68745","EDB-ID:34133","","2014/09/04","2020/04/27","","",""
+"77531","CVE-2014-0231","6.8","Medium","192.168.0.117","tcp","80","Apache 2.2.x < 2.2.28 Multiple Vulnerabilities","The remote web server is affected by multiple vulnerabilities.","According to its banner, the version of Apache 2.2.x running on the
+remote host is prior to 2.2.28. It is, therefore, affected by the
+following vulnerabilities :
+
+  - A flaw exists within the 'mod_headers' module which
+    allows a remote attacker to inject arbitrary headers.
+    This is done by placing a header in the trailer portion
+    of data being sent using chunked transfer encoding.
+    (CVE-2013-5704)
+
+  - A flaw exists within the 'mod_deflate' module when
+    handling highly compressed bodies. Using a specially
+    crafted request, a remote attacker can exploit this to
+    cause a denial of service by exhausting memory and CPU
+    resources. (CVE-2014-0118)
+
+  - The 'mod_status' module contains a race condition that
+    can be triggered when handling the scoreboard. A remote
+    attacker can exploit this to cause a denial of service,
+    execute arbitrary code, or obtain sensitive credential
+    information. (CVE-2014-0226)
+
+  - The 'mod_cgid' module lacks a time out mechanism. Using
+    a specially crafted request, a remote attacker can use
+    this flaw to cause a denial of service by causing child
+    processes to linger indefinitely, eventually filling up
+    the scoreboard. (CVE-2014-0231)
+
+Note that Nessus has not tested for these issues but has instead
+relied only on the application's self-reported version number.","Upgrade to Apache version 2.2.29 or later.
+
+Note that version 2.2.28 was never officially released.","https://www.zerodayinitiative.com/advisories/ZDI-14-236/
+https://archive.apache.org/dist/httpd/CHANGES_2.2.29
+http://httpd.apache.org/security/vulnerabilities_22.html
+http://swende.se/blog/HTTPChunked.html","
+  Version source    : Server: Apache/2.2.17 (PCLinuxOS 2011/PREFORK-1pclos2011)
+  Installed version : 2.2.17
+  Fixed version     : 2.2.29
+","","","","7.3","5.3","6.6","","","Medium","66550;68678;68742;68745","EDB-ID:34133","","2014/09/04","2020/04/27","","",""
+"86420","","","None","192.168.0.117","tcp","0","Ethernet MAC Addresses","This plugin gathers MAC addresses from various sources and
+consolidates them into a list.","This plugin gathers MAC addresses discovered from both remote probing
+of the host (e.g. SNMP and Netbios) and from running local checks
+(e.g. ifconfig). It then consolidates the MAC addresses into a single,
+unique, and uniform list.","n/a","","The following is a consolidated list of detected MAC addresses:
+  - 08:00:27:4D:4A:2E
+","","","","","","","","","None","","","","2015/10/16","2025/06/10","","",""
+"88098","CVE-2003-1418","4.3","Medium","192.168.0.117","tcp","80","Apache Server ETag Header Information Disclosure","The remote web server is affected by an information disclosure
+vulnerability.","The remote web server is affected by an information disclosure
+vulnerability due to the ETag header providing sensitive information
+that could aid an attacker, such as the inode number of requested
+files.","Modify the HTTP ETag header of the web server to not include file
+inodes in the ETag header calculation. Refer to the linked Apache
+documentation for more information.","http://httpd.apache.org/docs/2.2/mod/core.html#FileETag","
+Nessus was able to determine that the Apache Server listening on
+port 80 leaks the servers inode numbers in the ETag HTTP
+Header field : 
+
+  Source                 : ETag: ""407da-13a7-5621593db2080""
+  Inode number           : 264154
+  File size              : 5031 bytes
+  File modification time : Jan.  6, 2018 at 06:21:38 GMT
+","","","","5.3","3.2","4.6","","","Medium","6939","CWE:200","","2016/01/22","2025/02/11","","",""
+"100995","CVE-2017-3167","7.5","High","192.168.0.117","tcp","80","Apache 2.2.x < 2.2.33-dev / 2.4.x < 2.4.26 Multiple Vulnerabilities","The remote web server is affected by multiple vulnerabilities.","According to its banner, the version of Apache running on the remote
+host is 2.2.x prior to 2.2.33-dev or 2.4.x prior to 2.4.26. It is,
+therefore, affected by the following vulnerabilities :
+
+  - An authentication bypass vulnerability exists due to
+    third-party modules using the ap_get_basic_auth_pw()
+    function outside of the authentication phase. An
+    unauthenticated, remote attacker can exploit this to
+    bypass authentication requirements. (CVE-2017-3167)
+
+  - A NULL pointer dereference flaw exists due to
+    third-party module calls to the mod_ssl
+    ap_hook_process_connection() function during an HTTP
+    request to an HTTPS port. An unauthenticated, remote
+    attacker can exploit this to cause a denial of service
+    condition. (CVE-2017-3169)
+
+  - A NULL pointer dereference flaw exists in mod_http2 that
+    is triggered when handling a specially crafted HTTP/2
+    request. An unauthenticated, remote attacker can exploit
+    this to cause a denial of service condition. Note that
+    this vulnerability does not affect 2.2.x.
+    (CVE-2017-7659)
+
+  - An out-of-bounds read error exists in the
+    ap_find_token() function due to improper handling of
+    header sequences. An unauthenticated, remote attacker
+    can exploit this, via a specially crafted header
+    sequence, to cause a denial of service condition.
+    (CVE-2017-7668)
+
+  - An out-of-bounds read error exists in mod_mime due to
+    improper handling of Content-Type response headers. An
+    unauthenticated, remote attacker can exploit this, via a
+    specially crafted Content-Type response header, to cause
+    a denial of service condition or the disclosure of
+    sensitive information. (CVE-2017-7679)
+
+Note that Nessus has not tested for these issues but has instead
+relied only on the application's self-reported version number.","Upgrade to Apache version 2.2.33-dev / 2.4.26 or later.","https://archive.apache.org/dist/httpd/CHANGES_2.2.32
+https://archive.apache.org/dist/httpd/CHANGES_2.4.26
+https://httpd.apache.org/security/vulnerabilities_22.html
+https://httpd.apache.org/security/vulnerabilities_24.html","
+  URL               : http://192.168.0.117/
+  Installed version : 2.2.17
+  Fixed version     : 2.2.33
+","","","","9.8","5.5","8.5","","","High","99132;99134;99135;99137;99170","","","2017/06/22","2022/04/11","","",""
+"100995","CVE-2017-3169","7.5","High","192.168.0.117","tcp","80","Apache 2.2.x < 2.2.33-dev / 2.4.x < 2.4.26 Multiple Vulnerabilities","The remote web server is affected by multiple vulnerabilities.","According to its banner, the version of Apache running on the remote
+host is 2.2.x prior to 2.2.33-dev or 2.4.x prior to 2.4.26. It is,
+therefore, affected by the following vulnerabilities :
+
+  - An authentication bypass vulnerability exists due to
+    third-party modules using the ap_get_basic_auth_pw()
+    function outside of the authentication phase. An
+    unauthenticated, remote attacker can exploit this to
+    bypass authentication requirements. (CVE-2017-3167)
+
+  - A NULL pointer dereference flaw exists due to
+    third-party module calls to the mod_ssl
+    ap_hook_process_connection() function during an HTTP
+    request to an HTTPS port. An unauthenticated, remote
+    attacker can exploit this to cause a denial of service
+    condition. (CVE-2017-3169)
+
+  - A NULL pointer dereference flaw exists in mod_http2 that
+    is triggered when handling a specially crafted HTTP/2
+    request. An unauthenticated, remote attacker can exploit
+    this to cause a denial of service condition. Note that
+    this vulnerability does not affect 2.2.x.
+    (CVE-2017-7659)
+
+  - An out-of-bounds read error exists in the
+    ap_find_token() function due to improper handling of
+    header sequences. An unauthenticated, remote attacker
+    can exploit this, via a specially crafted header
+    sequence, to cause a denial of service condition.
+    (CVE-2017-7668)
+
+  - An out-of-bounds read error exists in mod_mime due to
+    improper handling of Content-Type response headers. An
+    unauthenticated, remote attacker can exploit this, via a
+    specially crafted Content-Type response header, to cause
+    a denial of service condition or the disclosure of
+    sensitive information. (CVE-2017-7679)
+
+Note that Nessus has not tested for these issues but has instead
+relied only on the application's self-reported version number.","Upgrade to Apache version 2.2.33-dev / 2.4.26 or later.","https://archive.apache.org/dist/httpd/CHANGES_2.2.32
+https://archive.apache.org/dist/httpd/CHANGES_2.4.26
+https://httpd.apache.org/security/vulnerabilities_22.html
+https://httpd.apache.org/security/vulnerabilities_24.html","
+  URL               : http://192.168.0.117/
+  Installed version : 2.2.17
+  Fixed version     : 2.2.33
+","","","","9.8","5.5","8.5","","","High","99132;99134;99135;99137;99170","","","2017/06/22","2022/04/11","","",""
+"100995","CVE-2017-7659","7.5","High","192.168.0.117","tcp","80","Apache 2.2.x < 2.2.33-dev / 2.4.x < 2.4.26 Multiple Vulnerabilities","The remote web server is affected by multiple vulnerabilities.","According to its banner, the version of Apache running on the remote
+host is 2.2.x prior to 2.2.33-dev or 2.4.x prior to 2.4.26. It is,
+therefore, affected by the following vulnerabilities :
+
+  - An authentication bypass vulnerability exists due to
+    third-party modules using the ap_get_basic_auth_pw()
+    function outside of the authentication phase. An
+    unauthenticated, remote attacker can exploit this to
+    bypass authentication requirements. (CVE-2017-3167)
+
+  - A NULL pointer dereference flaw exists due to
+    third-party module calls to the mod_ssl
+    ap_hook_process_connection() function during an HTTP
+    request to an HTTPS port. An unauthenticated, remote
+    attacker can exploit this to cause a denial of service
+    condition. (CVE-2017-3169)
+
+  - A NULL pointer dereference flaw exists in mod_http2 that
+    is triggered when handling a specially crafted HTTP/2
+    request. An unauthenticated, remote attacker can exploit
+    this to cause a denial of service condition. Note that
+    this vulnerability does not affect 2.2.x.
+    (CVE-2017-7659)
+
+  - An out-of-bounds read error exists in the
+    ap_find_token() function due to improper handling of
+    header sequences. An unauthenticated, remote attacker
+    can exploit this, via a specially crafted header
+    sequence, to cause a denial of service condition.
+    (CVE-2017-7668)
+
+  - An out-of-bounds read error exists in mod_mime due to
+    improper handling of Content-Type response headers. An
+    unauthenticated, remote attacker can exploit this, via a
+    specially crafted Content-Type response header, to cause
+    a denial of service condition or the disclosure of
+    sensitive information. (CVE-2017-7679)
+
+Note that Nessus has not tested for these issues but has instead
+relied only on the application's self-reported version number.","Upgrade to Apache version 2.2.33-dev / 2.4.26 or later.","https://archive.apache.org/dist/httpd/CHANGES_2.2.32
+https://archive.apache.org/dist/httpd/CHANGES_2.4.26
+https://httpd.apache.org/security/vulnerabilities_22.html
+https://httpd.apache.org/security/vulnerabilities_24.html","
+  URL               : http://192.168.0.117/
+  Installed version : 2.2.17
+  Fixed version     : 2.2.33
+","","","","9.8","5.5","8.5","","","High","99132;99134;99135;99137;99170","","","2017/06/22","2022/04/11","","",""
+"100995","CVE-2017-7668","7.5","High","192.168.0.117","tcp","80","Apache 2.2.x < 2.2.33-dev / 2.4.x < 2.4.26 Multiple Vulnerabilities","The remote web server is affected by multiple vulnerabilities.","According to its banner, the version of Apache running on the remote
+host is 2.2.x prior to 2.2.33-dev or 2.4.x prior to 2.4.26. It is,
+therefore, affected by the following vulnerabilities :
+
+  - An authentication bypass vulnerability exists due to
+    third-party modules using the ap_get_basic_auth_pw()
+    function outside of the authentication phase. An
+    unauthenticated, remote attacker can exploit this to
+    bypass authentication requirements. (CVE-2017-3167)
+
+  - A NULL pointer dereference flaw exists due to
+    third-party module calls to the mod_ssl
+    ap_hook_process_connection() function during an HTTP
+    request to an HTTPS port. An unauthenticated, remote
+    attacker can exploit this to cause a denial of service
+    condition. (CVE-2017-3169)
+
+  - A NULL pointer dereference flaw exists in mod_http2 that
+    is triggered when handling a specially crafted HTTP/2
+    request. An unauthenticated, remote attacker can exploit
+    this to cause a denial of service condition. Note that
+    this vulnerability does not affect 2.2.x.
+    (CVE-2017-7659)
+
+  - An out-of-bounds read error exists in the
+    ap_find_token() function due to improper handling of
+    header sequences. An unauthenticated, remote attacker
+    can exploit this, via a specially crafted header
+    sequence, to cause a denial of service condition.
+    (CVE-2017-7668)
+
+  - An out-of-bounds read error exists in mod_mime due to
+    improper handling of Content-Type response headers. An
+    unauthenticated, remote attacker can exploit this, via a
+    specially crafted Content-Type response header, to cause
+    a denial of service condition or the disclosure of
+    sensitive information. (CVE-2017-7679)
+
+Note that Nessus has not tested for these issues but has instead
+relied only on the application's self-reported version number.","Upgrade to Apache version 2.2.33-dev / 2.4.26 or later.","https://archive.apache.org/dist/httpd/CHANGES_2.2.32
+https://archive.apache.org/dist/httpd/CHANGES_2.4.26
+https://httpd.apache.org/security/vulnerabilities_22.html
+https://httpd.apache.org/security/vulnerabilities_24.html","
+  URL               : http://192.168.0.117/
+  Installed version : 2.2.17
+  Fixed version     : 2.2.33
+","","","","9.8","5.5","8.5","","","High","99132;99134;99135;99137;99170","","","2017/06/22","2022/04/11","","",""
+"100995","CVE-2017-7679","7.5","High","192.168.0.117","tcp","80","Apache 2.2.x < 2.2.33-dev / 2.4.x < 2.4.26 Multiple Vulnerabilities","The remote web server is affected by multiple vulnerabilities.","According to its banner, the version of Apache running on the remote
+host is 2.2.x prior to 2.2.33-dev or 2.4.x prior to 2.4.26. It is,
+therefore, affected by the following vulnerabilities :
+
+  - An authentication bypass vulnerability exists due to
+    third-party modules using the ap_get_basic_auth_pw()
+    function outside of the authentication phase. An
+    unauthenticated, remote attacker can exploit this to
+    bypass authentication requirements. (CVE-2017-3167)
+
+  - A NULL pointer dereference flaw exists due to
+    third-party module calls to the mod_ssl
+    ap_hook_process_connection() function during an HTTP
+    request to an HTTPS port. An unauthenticated, remote
+    attacker can exploit this to cause a denial of service
+    condition. (CVE-2017-3169)
+
+  - A NULL pointer dereference flaw exists in mod_http2 that
+    is triggered when handling a specially crafted HTTP/2
+    request. An unauthenticated, remote attacker can exploit
+    this to cause a denial of service condition. Note that
+    this vulnerability does not affect 2.2.x.
+    (CVE-2017-7659)
+
+  - An out-of-bounds read error exists in the
+    ap_find_token() function due to improper handling of
+    header sequences. An unauthenticated, remote attacker
+    can exploit this, via a specially crafted header
+    sequence, to cause a denial of service condition.
+    (CVE-2017-7668)
+
+  - An out-of-bounds read error exists in mod_mime due to
+    improper handling of Content-Type response headers. An
+    unauthenticated, remote attacker can exploit this, via a
+    specially crafted Content-Type response header, to cause
+    a denial of service condition or the disclosure of
+    sensitive information. (CVE-2017-7679)
+
+Note that Nessus has not tested for these issues but has instead
+relied only on the application's self-reported version number.","Upgrade to Apache version 2.2.33-dev / 2.4.26 or later.","https://archive.apache.org/dist/httpd/CHANGES_2.2.32
+https://archive.apache.org/dist/httpd/CHANGES_2.4.26
+https://httpd.apache.org/security/vulnerabilities_22.html
+https://httpd.apache.org/security/vulnerabilities_24.html","
+  URL               : http://192.168.0.117/
+  Installed version : 2.2.17
+  Fixed version     : 2.2.33
+","","","","9.8","5.5","8.5","","","High","99132;99134;99135;99137;99170","","","2017/06/22","2022/04/11","","",""
+"101787","CVE-2017-3167","7.5","High","192.168.0.117","tcp","80","Apache 2.2.x < 2.2.34 Multiple Vulnerabilities","The remote web server is affected by multiple vulnerabilities.","According to its banner, the version of Apache running on the remote
+host is 2.2.x prior to 2.2.34. It is, therefore, affected by the
+following vulnerabilities :
+
+  - An authentication bypass vulnerability exists in httpd
+    due to third-party modules using the
+    ap_get_basic_auth_pw() function outside of the
+    authentication phase. An unauthenticated, remote
+    attacker can exploit this to bypass authentication
+    requirements. (CVE-2017-3167)
+
+  - A denial of service vulnerability exists in httpd due to
+    a NULL pointer dereference flaw that is triggered when a
+    third-party module calls the mod_ssl
+    ap_hook_process_connection() function during an HTTP
+    request to an HTTPS port. An unauthenticated, remote
+    attacker can exploit this to cause a denial of service
+    condition. (CVE-2017-3169)
+
+  - A denial of service vulnerability exists in httpd due to
+    an out-of-bounds read error in the ap_find_token()
+    function that is triggered when handling a specially
+    crafted request header sequence. An unauthenticated,
+    remote attacker can exploit this to crash the
+    service or force ap_find_token() to return an incorrect
+    value. (CVE-2017-7668)
+
+  - A denial of service vulnerability exists in httpd due to
+    an out-of-bounds read error in the mod_mime that is
+    triggered when handling a specially crafted Content-Type
+    response header. An unauthenticated, remote attacker can
+    exploit this to disclose sensitive information or cause
+    a denial of service condition. (CVE-2017-7679)
+
+  - A denial of service vulnerability exists in httpd due to
+    a failure to initialize or reset the value placeholder
+    in [Proxy-]Authorization headers of type 'Digest' before
+    or between successive key=value assignments by
+    mod_auth_digest. An unauthenticated, remote attacker can
+    exploit this, by providing an initial key with no '='
+    assignment, to disclose sensitive information or cause a
+    denial of service condition. (CVE-2017-9788)
+
+Note that Nessus has not tested for these issues but has instead
+relied only on the application's self-reported version number.","Upgrade to Apache version 2.2.34 or later.","https://archive.apache.org/dist/httpd/CHANGES_2.2.34
+https://httpd.apache.org/security/vulnerabilities_22.html","
+  Source            : Server: Apache/2.2.17 (PCLinuxOS 2011/PREFORK-1pclos2011)
+  Installed version : 2.2.17
+  Fixed version     : 2.2.34
+","","","","9.8","5.5","8.5","","","High","99134;99135;99137;99170;99569","","","2017/07/18","2018/09/17","","",""
+"101787","CVE-2017-3169","7.5","High","192.168.0.117","tcp","80","Apache 2.2.x < 2.2.34 Multiple Vulnerabilities","The remote web server is affected by multiple vulnerabilities.","According to its banner, the version of Apache running on the remote
+host is 2.2.x prior to 2.2.34. It is, therefore, affected by the
+following vulnerabilities :
+
+  - An authentication bypass vulnerability exists in httpd
+    due to third-party modules using the
+    ap_get_basic_auth_pw() function outside of the
+    authentication phase. An unauthenticated, remote
+    attacker can exploit this to bypass authentication
+    requirements. (CVE-2017-3167)
+
+  - A denial of service vulnerability exists in httpd due to
+    a NULL pointer dereference flaw that is triggered when a
+    third-party module calls the mod_ssl
+    ap_hook_process_connection() function during an HTTP
+    request to an HTTPS port. An unauthenticated, remote
+    attacker can exploit this to cause a denial of service
+    condition. (CVE-2017-3169)
+
+  - A denial of service vulnerability exists in httpd due to
+    an out-of-bounds read error in the ap_find_token()
+    function that is triggered when handling a specially
+    crafted request header sequence. An unauthenticated,
+    remote attacker can exploit this to crash the
+    service or force ap_find_token() to return an incorrect
+    value. (CVE-2017-7668)
+
+  - A denial of service vulnerability exists in httpd due to
+    an out-of-bounds read error in the mod_mime that is
+    triggered when handling a specially crafted Content-Type
+    response header. An unauthenticated, remote attacker can
+    exploit this to disclose sensitive information or cause
+    a denial of service condition. (CVE-2017-7679)
+
+  - A denial of service vulnerability exists in httpd due to
+    a failure to initialize or reset the value placeholder
+    in [Proxy-]Authorization headers of type 'Digest' before
+    or between successive key=value assignments by
+    mod_auth_digest. An unauthenticated, remote attacker can
+    exploit this, by providing an initial key with no '='
+    assignment, to disclose sensitive information or cause a
+    denial of service condition. (CVE-2017-9788)
+
+Note that Nessus has not tested for these issues but has instead
+relied only on the application's self-reported version number.","Upgrade to Apache version 2.2.34 or later.","https://archive.apache.org/dist/httpd/CHANGES_2.2.34
+https://httpd.apache.org/security/vulnerabilities_22.html","
+  Source            : Server: Apache/2.2.17 (PCLinuxOS 2011/PREFORK-1pclos2011)
+  Installed version : 2.2.17
+  Fixed version     : 2.2.34
+","","","","9.8","5.5","8.5","","","High","99134;99135;99137;99170;99569","","","2017/07/18","2018/09/17","","",""
+"101787","CVE-2017-7668","7.5","High","192.168.0.117","tcp","80","Apache 2.2.x < 2.2.34 Multiple Vulnerabilities","The remote web server is affected by multiple vulnerabilities.","According to its banner, the version of Apache running on the remote
+host is 2.2.x prior to 2.2.34. It is, therefore, affected by the
+following vulnerabilities :
+
+  - An authentication bypass vulnerability exists in httpd
+    due to third-party modules using the
+    ap_get_basic_auth_pw() function outside of the
+    authentication phase. An unauthenticated, remote
+    attacker can exploit this to bypass authentication
+    requirements. (CVE-2017-3167)
+
+  - A denial of service vulnerability exists in httpd due to
+    a NULL pointer dereference flaw that is triggered when a
+    third-party module calls the mod_ssl
+    ap_hook_process_connection() function during an HTTP
+    request to an HTTPS port. An unauthenticated, remote
+    attacker can exploit this to cause a denial of service
+    condition. (CVE-2017-3169)
+
+  - A denial of service vulnerability exists in httpd due to
+    an out-of-bounds read error in the ap_find_token()
+    function that is triggered when handling a specially
+    crafted request header sequence. An unauthenticated,
+    remote attacker can exploit this to crash the
+    service or force ap_find_token() to return an incorrect
+    value. (CVE-2017-7668)
+
+  - A denial of service vulnerability exists in httpd due to
+    an out-of-bounds read error in the mod_mime that is
+    triggered when handling a specially crafted Content-Type
+    response header. An unauthenticated, remote attacker can
+    exploit this to disclose sensitive information or cause
+    a denial of service condition. (CVE-2017-7679)
+
+  - A denial of service vulnerability exists in httpd due to
+    a failure to initialize or reset the value placeholder
+    in [Proxy-]Authorization headers of type 'Digest' before
+    or between successive key=value assignments by
+    mod_auth_digest. An unauthenticated, remote attacker can
+    exploit this, by providing an initial key with no '='
+    assignment, to disclose sensitive information or cause a
+    denial of service condition. (CVE-2017-9788)
+
+Note that Nessus has not tested for these issues but has instead
+relied only on the application's self-reported version number.","Upgrade to Apache version 2.2.34 or later.","https://archive.apache.org/dist/httpd/CHANGES_2.2.34
+https://httpd.apache.org/security/vulnerabilities_22.html","
+  Source            : Server: Apache/2.2.17 (PCLinuxOS 2011/PREFORK-1pclos2011)
+  Installed version : 2.2.17
+  Fixed version     : 2.2.34
+","","","","9.8","5.5","8.5","","","High","99134;99135;99137;99170;99569","","","2017/07/18","2018/09/17","","",""
+"101787","CVE-2017-7679","7.5","High","192.168.0.117","tcp","80","Apache 2.2.x < 2.2.34 Multiple Vulnerabilities","The remote web server is affected by multiple vulnerabilities.","According to its banner, the version of Apache running on the remote
+host is 2.2.x prior to 2.2.34. It is, therefore, affected by the
+following vulnerabilities :
+
+  - An authentication bypass vulnerability exists in httpd
+    due to third-party modules using the
+    ap_get_basic_auth_pw() function outside of the
+    authentication phase. An unauthenticated, remote
+    attacker can exploit this to bypass authentication
+    requirements. (CVE-2017-3167)
+
+  - A denial of service vulnerability exists in httpd due to
+    a NULL pointer dereference flaw that is triggered when a
+    third-party module calls the mod_ssl
+    ap_hook_process_connection() function during an HTTP
+    request to an HTTPS port. An unauthenticated, remote
+    attacker can exploit this to cause a denial of service
+    condition. (CVE-2017-3169)
+
+  - A denial of service vulnerability exists in httpd due to
+    an out-of-bounds read error in the ap_find_token()
+    function that is triggered when handling a specially
+    crafted request header sequence. An unauthenticated,
+    remote attacker can exploit this to crash the
+    service or force ap_find_token() to return an incorrect
+    value. (CVE-2017-7668)
+
+  - A denial of service vulnerability exists in httpd due to
+    an out-of-bounds read error in the mod_mime that is
+    triggered when handling a specially crafted Content-Type
+    response header. An unauthenticated, remote attacker can
+    exploit this to disclose sensitive information or cause
+    a denial of service condition. (CVE-2017-7679)
+
+  - A denial of service vulnerability exists in httpd due to
+    a failure to initialize or reset the value placeholder
+    in [Proxy-]Authorization headers of type 'Digest' before
+    or between successive key=value assignments by
+    mod_auth_digest. An unauthenticated, remote attacker can
+    exploit this, by providing an initial key with no '='
+    assignment, to disclose sensitive information or cause a
+    denial of service condition. (CVE-2017-9788)
+
+Note that Nessus has not tested for these issues but has instead
+relied only on the application's self-reported version number.","Upgrade to Apache version 2.2.34 or later.","https://archive.apache.org/dist/httpd/CHANGES_2.2.34
+https://httpd.apache.org/security/vulnerabilities_22.html","
+  Source            : Server: Apache/2.2.17 (PCLinuxOS 2011/PREFORK-1pclos2011)
+  Installed version : 2.2.17
+  Fixed version     : 2.2.34
+","","","","9.8","5.5","8.5","","","High","99134;99135;99137;99170;99569","","","2017/07/18","2018/09/17","","",""
+"101787","CVE-2017-9788","7.5","High","192.168.0.117","tcp","80","Apache 2.2.x < 2.2.34 Multiple Vulnerabilities","The remote web server is affected by multiple vulnerabilities.","According to its banner, the version of Apache running on the remote
+host is 2.2.x prior to 2.2.34. It is, therefore, affected by the
+following vulnerabilities :
+
+  - An authentication bypass vulnerability exists in httpd
+    due to third-party modules using the
+    ap_get_basic_auth_pw() function outside of the
+    authentication phase. An unauthenticated, remote
+    attacker can exploit this to bypass authentication
+    requirements. (CVE-2017-3167)
+
+  - A denial of service vulnerability exists in httpd due to
+    a NULL pointer dereference flaw that is triggered when a
+    third-party module calls the mod_ssl
+    ap_hook_process_connection() function during an HTTP
+    request to an HTTPS port. An unauthenticated, remote
+    attacker can exploit this to cause a denial of service
+    condition. (CVE-2017-3169)
+
+  - A denial of service vulnerability exists in httpd due to
+    an out-of-bounds read error in the ap_find_token()
+    function that is triggered when handling a specially
+    crafted request header sequence. An unauthenticated,
+    remote attacker can exploit this to crash the
+    service or force ap_find_token() to return an incorrect
+    value. (CVE-2017-7668)
+
+  - A denial of service vulnerability exists in httpd due to
+    an out-of-bounds read error in the mod_mime that is
+    triggered when handling a specially crafted Content-Type
+    response header. An unauthenticated, remote attacker can
+    exploit this to disclose sensitive information or cause
+    a denial of service condition. (CVE-2017-7679)
+
+  - A denial of service vulnerability exists in httpd due to
+    a failure to initialize or reset the value placeholder
+    in [Proxy-]Authorization headers of type 'Digest' before
+    or between successive key=value assignments by
+    mod_auth_digest. An unauthenticated, remote attacker can
+    exploit this, by providing an initial key with no '='
+    assignment, to disclose sensitive information or cause a
+    denial of service condition. (CVE-2017-9788)
+
+Note that Nessus has not tested for these issues but has instead
+relied only on the application's self-reported version number.","Upgrade to Apache version 2.2.34 or later.","https://archive.apache.org/dist/httpd/CHANGES_2.2.34
+https://httpd.apache.org/security/vulnerabilities_22.html","
+  Source            : Server: Apache/2.2.17 (PCLinuxOS 2011/PREFORK-1pclos2011)
+  Installed version : 2.2.17
+  Fixed version     : 2.2.34
+","","","","9.8","5.5","8.5","","","High","99134;99135;99137;99170;99569","","","2017/07/18","2018/09/17","","",""
+"106658","","","None","192.168.0.117","tcp","80","JQuery Detection","The web server on the remote host uses JQuery.","Nessus was able to detect JQuery on the remote host.","n/a","https://jquery.com/","
+Nessus detected 2 installs of jquery:
+
+  URL     : http://192.168.0.117/vendor/jquery/jquery-3.2.1.min.js
+  Version : 3.2.1
+
+  URL     : http://192.168.0.117/vendor/tilt/tilt.jquery.min.js
+  Version : unknown
+","","","","","","","","","None","","","","2018/02/07","2024/02/08","","",""
+"136929","CVE-2020-11022","4.3","Medium","192.168.0.117","tcp","80","JQuery 1.2 < 3.5.0 Multiple XSS","The remote web server is affected by multiple cross site scripting
+vulnerability.","According to the self-reported version in the script, the version of JQuery hosted on the remote web server is greater
+than or equal to 1.2 and prior to 3.5.0. It is, therefore, affected by multiple cross site scripting vulnerabilities.
+
+Note, the vulnerabilities referenced in this plugin have no security impact on PAN-OS, and/or the scenarios 
+required for successful exploitation do not exist on devices running a PAN-OS release.","Upgrade to JQuery version 3.5.0 or later.","https://blog.jquery.com/2020/04/10/jquery-3-5-0-released/
+https://security.paloaltonetworks.com/PAN-SA-2020-0007","
+  URL               : http://192.168.0.117/vendor/jquery/jquery-3.2.1.min.js
+  Installed version : 3.2.1
+  Fixed version     : 3.5.0
+","II","","","6.1","3.6","5.7","","","Medium","","IAVB:2020-B-0030;CEA-ID:CEA-2021-0004;CEA-ID:CEA-2021-0025;CISA-KNOWN-EXPLOITED:2025/02/13","","2020/05/28","2025/01/24","","",""
+"136929","CVE-2020-11023","4.3","Medium","192.168.0.117","tcp","80","JQuery 1.2 < 3.5.0 Multiple XSS","The remote web server is affected by multiple cross site scripting
+vulnerability.","According to the self-reported version in the script, the version of JQuery hosted on the remote web server is greater
+than or equal to 1.2 and prior to 3.5.0. It is, therefore, affected by multiple cross site scripting vulnerabilities.
+
+Note, the vulnerabilities referenced in this plugin have no security impact on PAN-OS, and/or the scenarios 
+required for successful exploitation do not exist on devices running a PAN-OS release.","Upgrade to JQuery version 3.5.0 or later.","https://blog.jquery.com/2020/04/10/jquery-3-5-0-released/
+https://security.paloaltonetworks.com/PAN-SA-2020-0007","
+  URL               : http://192.168.0.117/vendor/jquery/jquery-3.2.1.min.js
+  Installed version : 3.2.1
+  Fixed version     : 3.5.0
+","II","","","6.1","3.6","5.7","","","Medium","","IAVB:2020-B-0030;CEA-ID:CEA-2021-0004;CEA-ID:CEA-2021-0025;CISA-KNOWN-EXPLOITED:2025/02/13","","2020/05/28","2025/01/24","","",""
+"153583","CVE-2021-40438","6.8","Medium","192.168.0.117","tcp","80","Apache < 2.4.49 Multiple Vulnerabilities","The remote web server is affected by a vulnerability.","The version of Apache httpd installed on the remote host is prior to 2.4.49. It is, therefore, affected by a
+vulnerability as referenced in the 2.4.49 changelog.
+
+  - A crafted request uri-path can cause mod_proxy to forward the request to an origin server choosen by the
+  remote user. (CVE-2021-40438)
+
+Note that Nessus has not tested for this issue but has instead relied only on the application's self-reported version
+number.","Upgrade to Apache version 2.4.49 or later.","https://downloads.apache.org/httpd/CHANGES_2.4
+https://httpd.apache.org/security/vulnerabilities_24.html","
+  URL               : http://192.168.0.117/
+  Installed version : 2.2.17
+  Fixed version     : 2.4.49
+","I","","","9.0","5.6","8.3","","","Medium","","IAVA:2021-A-0440-S;CISA-KNOWN-EXPLOITED:2021/12/15","","2021/09/23","2023/04/25","","",""
+"153584","CVE-2021-34798","7.5","High","192.168.0.117","tcp","80","Apache < 2.4.49 Multiple Vulnerabilities","The remote web server is affected by a vulnerability.","The version of Apache httpd installed on the remote host is prior to 2.4.49. It is, therefore, affected by multiple
+vulnerabilities as referenced in the 2.4.49 changelog.
+
+  - ap_escape_quotes() may write beyond the end of a buffer when given malicious input. No included modules pass
+    untrusted data to these functions, but third-party / external modules may. (CVE-2021-39275)
+
+  - Malformed requests may cause the server to dereference a NULL pointer. (CVE-2021-34798)
+
+Note that Nessus has not tested for this issue but has instead relied only on the application's self-reported version
+number.","Upgrade to Apache version 2.4.49 or later.","https://downloads.apache.org/httpd/CHANGES_2.4
+https://httpd.apache.org/security/vulnerabilities_24.html","
+  URL               : http://192.168.0.117/
+  Installed version : 2.2.17
+  Fixed version     : 2.4.49
+","I","","","9.8","5.5","8.5","","","High","","IAVA:2021-A-0440-S","","2021/09/23","2022/04/11","","",""
+"153584","CVE-2021-39275","7.5","High","192.168.0.117","tcp","80","Apache < 2.4.49 Multiple Vulnerabilities","The remote web server is affected by a vulnerability.","The version of Apache httpd installed on the remote host is prior to 2.4.49. It is, therefore, affected by multiple
+vulnerabilities as referenced in the 2.4.49 changelog.
+
+  - ap_escape_quotes() may write beyond the end of a buffer when given malicious input. No included modules pass
+    untrusted data to these functions, but third-party / external modules may. (CVE-2021-39275)
+
+  - Malformed requests may cause the server to dereference a NULL pointer. (CVE-2021-34798)
+
+Note that Nessus has not tested for this issue but has instead relied only on the application's self-reported version
+number.","Upgrade to Apache version 2.4.49 or later.","https://downloads.apache.org/httpd/CHANGES_2.4
+https://httpd.apache.org/security/vulnerabilities_24.html","
+  URL               : http://192.168.0.117/
+  Installed version : 2.2.17
+  Fixed version     : 2.4.49
+","I","","","9.8","5.5","8.5","","","High","","IAVA:2021-A-0440-S","","2021/09/23","2022/04/11","","",""
+"158900","CVE-2022-22719","7.5","High","192.168.0.117","tcp","80","Apache 2.4.x < 2.4.53 Multiple Vulnerabilities","The remote web server is affected by multiple vulnerabilities.","The version of Apache httpd installed on the remote host is prior to 2.4.53. It is, therefore, affected by multiple
+vulnerabilities as referenced in the 2.4.53 advisory.
+
+  - mod_lua Use of uninitialized value of in r:parsebody: A carefully crafted request body can cause a read to a
+    random memory area which could cause the process to crash.  This issue affects Apache HTTP Server 2.4.52
+    and earlier. Acknowledgements: Chamal De Silva (CVE-2022-22719)
+
+  - HTTP request smuggling: Apache HTTP Server 2.4.52 and earlier fails to close inbound connection when errors are 
+    encountered discarding the request body, exposing the server to HTTP Request Smuggling Acknowledgements: James 
+    Kettle <james.kettle portswigger.net> (CVE-2022-22720)
+
+  - Possible buffer overflow with very large or unlimited LimitXMLRequestBody in core: If LimitXMLRequestBody is set to 
+    allow request bodies larger than 350MB (defaults to 1M) on 32 bit systems an integer overflow happens which later 
+    causes out of bounds writes.  This issue affects Apache HTTP Server 2.4.52 and earlier. Acknowledgements: Anonymous 
+    working with Trend Micro Zero Day Initiative (CVE-2022-22721)
+
+  - Read/write beyond bounds in mod_sed: Out-of-bounds Write vulnerability in mod_sed of Apache HTTP Server allows
+    an attacker to overwrite heap memory with possibly attacker provided data.  This issue affects Apache HTTP
+    Server 2.4 version 2.4.52 and prior versions. Acknowledgements: Ronald Crane (Zippenhop LLC)
+    (CVE-2022-23943)
+
+Note that Nessus has not tested for this issue but has instead relied only on the application's self-reported version
+number.","Upgrade to Apache version 2.4.53 or later.","http://www.apache.org/dist/httpd/Announcement2.4.html
+https://httpd.apache.org/security/vulnerabilities_24.html","
+  URL               : http://192.168.0.117/
+  Installed version : 2.2.17
+  Fixed version     : 2.4.53
+","I","","","9.8","6.2","9.1","","","High","","IAVA:2022-A-0124-S","","2022/03/14","2023/11/06","","",""
+"158900","CVE-2022-22720","7.5","High","192.168.0.117","tcp","80","Apache 2.4.x < 2.4.53 Multiple Vulnerabilities","The remote web server is affected by multiple vulnerabilities.","The version of Apache httpd installed on the remote host is prior to 2.4.53. It is, therefore, affected by multiple
+vulnerabilities as referenced in the 2.4.53 advisory.
+
+  - mod_lua Use of uninitialized value of in r:parsebody: A carefully crafted request body can cause a read to a
+    random memory area which could cause the process to crash.  This issue affects Apache HTTP Server 2.4.52
+    and earlier. Acknowledgements: Chamal De Silva (CVE-2022-22719)
+
+  - HTTP request smuggling: Apache HTTP Server 2.4.52 and earlier fails to close inbound connection when errors are 
+    encountered discarding the request body, exposing the server to HTTP Request Smuggling Acknowledgements: James 
+    Kettle <james.kettle portswigger.net> (CVE-2022-22720)
+
+  - Possible buffer overflow with very large or unlimited LimitXMLRequestBody in core: If LimitXMLRequestBody is set to 
+    allow request bodies larger than 350MB (defaults to 1M) on 32 bit systems an integer overflow happens which later 
+    causes out of bounds writes.  This issue affects Apache HTTP Server 2.4.52 and earlier. Acknowledgements: Anonymous 
+    working with Trend Micro Zero Day Initiative (CVE-2022-22721)
+
+  - Read/write beyond bounds in mod_sed: Out-of-bounds Write vulnerability in mod_sed of Apache HTTP Server allows
+    an attacker to overwrite heap memory with possibly attacker provided data.  This issue affects Apache HTTP
+    Server 2.4 version 2.4.52 and prior versions. Acknowledgements: Ronald Crane (Zippenhop LLC)
+    (CVE-2022-23943)
+
+Note that Nessus has not tested for this issue but has instead relied only on the application's self-reported version
+number.","Upgrade to Apache version 2.4.53 or later.","http://www.apache.org/dist/httpd/Announcement2.4.html
+https://httpd.apache.org/security/vulnerabilities_24.html","
+  URL               : http://192.168.0.117/
+  Installed version : 2.2.17
+  Fixed version     : 2.4.53
+","I","","","9.8","6.2","9.1","","","High","","IAVA:2022-A-0124-S","","2022/03/14","2023/11/06","","",""
+"158900","CVE-2022-22721","7.5","High","192.168.0.117","tcp","80","Apache 2.4.x < 2.4.53 Multiple Vulnerabilities","The remote web server is affected by multiple vulnerabilities.","The version of Apache httpd installed on the remote host is prior to 2.4.53. It is, therefore, affected by multiple
+vulnerabilities as referenced in the 2.4.53 advisory.
+
+  - mod_lua Use of uninitialized value of in r:parsebody: A carefully crafted request body can cause a read to a
+    random memory area which could cause the process to crash.  This issue affects Apache HTTP Server 2.4.52
+    and earlier. Acknowledgements: Chamal De Silva (CVE-2022-22719)
+
+  - HTTP request smuggling: Apache HTTP Server 2.4.52 and earlier fails to close inbound connection when errors are 
+    encountered discarding the request body, exposing the server to HTTP Request Smuggling Acknowledgements: James 
+    Kettle <james.kettle portswigger.net> (CVE-2022-22720)
+
+  - Possible buffer overflow with very large or unlimited LimitXMLRequestBody in core: If LimitXMLRequestBody is set to 
+    allow request bodies larger than 350MB (defaults to 1M) on 32 bit systems an integer overflow happens which later 
+    causes out of bounds writes.  This issue affects Apache HTTP Server 2.4.52 and earlier. Acknowledgements: Anonymous 
+    working with Trend Micro Zero Day Initiative (CVE-2022-22721)
+
+  - Read/write beyond bounds in mod_sed: Out-of-bounds Write vulnerability in mod_sed of Apache HTTP Server allows
+    an attacker to overwrite heap memory with possibly attacker provided data.  This issue affects Apache HTTP
+    Server 2.4 version 2.4.52 and prior versions. Acknowledgements: Ronald Crane (Zippenhop LLC)
+    (CVE-2022-23943)
+
+Note that Nessus has not tested for this issue but has instead relied only on the application's self-reported version
+number.","Upgrade to Apache version 2.4.53 or later.","http://www.apache.org/dist/httpd/Announcement2.4.html
+https://httpd.apache.org/security/vulnerabilities_24.html","
+  URL               : http://192.168.0.117/
+  Installed version : 2.2.17
+  Fixed version     : 2.4.53
+","I","","","9.8","6.2","9.1","","","High","","IAVA:2022-A-0124-S","","2022/03/14","2023/11/06","","",""
+"158900","CVE-2022-23943","7.5","High","192.168.0.117","tcp","80","Apache 2.4.x < 2.4.53 Multiple Vulnerabilities","The remote web server is affected by multiple vulnerabilities.","The version of Apache httpd installed on the remote host is prior to 2.4.53. It is, therefore, affected by multiple
+vulnerabilities as referenced in the 2.4.53 advisory.
+
+  - mod_lua Use of uninitialized value of in r:parsebody: A carefully crafted request body can cause a read to a
+    random memory area which could cause the process to crash.  This issue affects Apache HTTP Server 2.4.52
+    and earlier. Acknowledgements: Chamal De Silva (CVE-2022-22719)
+
+  - HTTP request smuggling: Apache HTTP Server 2.4.52 and earlier fails to close inbound connection when errors are 
+    encountered discarding the request body, exposing the server to HTTP Request Smuggling Acknowledgements: James 
+    Kettle <james.kettle portswigger.net> (CVE-2022-22720)
+
+  - Possible buffer overflow with very large or unlimited LimitXMLRequestBody in core: If LimitXMLRequestBody is set to 
+    allow request bodies larger than 350MB (defaults to 1M) on 32 bit systems an integer overflow happens which later 
+    causes out of bounds writes.  This issue affects Apache HTTP Server 2.4.52 and earlier. Acknowledgements: Anonymous 
+    working with Trend Micro Zero Day Initiative (CVE-2022-22721)
+
+  - Read/write beyond bounds in mod_sed: Out-of-bounds Write vulnerability in mod_sed of Apache HTTP Server allows
+    an attacker to overwrite heap memory with possibly attacker provided data.  This issue affects Apache HTTP
+    Server 2.4 version 2.4.52 and prior versions. Acknowledgements: Ronald Crane (Zippenhop LLC)
+    (CVE-2022-23943)
+
+Note that Nessus has not tested for this issue but has instead relied only on the application's self-reported version
+number.","Upgrade to Apache version 2.4.53 or later.","http://www.apache.org/dist/httpd/Announcement2.4.html
+https://httpd.apache.org/security/vulnerabilities_24.html","
+  URL               : http://192.168.0.117/
+  Installed version : 2.2.17
+  Fixed version     : 2.4.53
+","I","","","9.8","6.2","9.1","","","High","","IAVA:2022-A-0124-S","","2022/03/14","2023/11/06","","",""
+"161948","CVE-2022-28614","6.4","Medium","192.168.0.117","tcp","80","Apache 2.4.x < 2.4.54 Multiple Vulnerabilities","The remote web server is affected by multiple vulnerabilities.","The version of Apache httpd installed on the remote host is prior to 2.4.54. It is, therefore, affected by multiple
+vulnerabilities as referenced in the 2.4.54 advisory.
+
+  - Read beyond bounds via ap_rwrite(): The ap_rwrite() function in Apache HTTP Server 2.4.53 and earlier may
+    read unintended memory if an attacker can cause the server to reflect very large input using ap_rwrite()
+    or ap_rputs(), such as with mod_luas r:puts() function. Acknowledgements: The Apache HTTP Server project
+    would like to thank Ronald Crane (Zippenhop LLC) for reporting this issue (CVE-2022-28614)
+
+  - Read beyond bounds in ap_strcmp_match(): Apache HTTP Server 2.4.53 and earlier may crash or disclose
+    information due to a read beyond bounds in ap_strcmp_match() when provided with an extremely large input
+    buffer.  While no code distributed with the server can be coerced into such a call, third-party modules or
+    lua scripts that use ap_strcmp_match() may hypothetically be affected. Acknowledgements: The Apache HTTP
+    Server project would like to thank Ronald Crane (Zippenhop LLC) for reporting this issue (CVE-2022-28615)
+
+Note that Nessus has not tested for these issues but has instead relied only on the application's self-reported version
+number.","Upgrade to Apache version 2.4.54 or later.","https://httpd.apache.org/security/vulnerabilities_24.html","
+  URL               : http://192.168.0.117/
+  Installed version : 2.2.17
+  Fixed version     : 2.4.54
+","I","","","9.1","4.7","7.9","","","Medium","","IAVA:2022-A-0230-S","","2022/06/08","2024/04/18","","",""
+"161948","CVE-2022-28615","6.4","Medium","192.168.0.117","tcp","80","Apache 2.4.x < 2.4.54 Multiple Vulnerabilities","The remote web server is affected by multiple vulnerabilities.","The version of Apache httpd installed on the remote host is prior to 2.4.54. It is, therefore, affected by multiple
+vulnerabilities as referenced in the 2.4.54 advisory.
+
+  - Read beyond bounds via ap_rwrite(): The ap_rwrite() function in Apache HTTP Server 2.4.53 and earlier may
+    read unintended memory if an attacker can cause the server to reflect very large input using ap_rwrite()
+    or ap_rputs(), such as with mod_luas r:puts() function. Acknowledgements: The Apache HTTP Server project
+    would like to thank Ronald Crane (Zippenhop LLC) for reporting this issue (CVE-2022-28614)
+
+  - Read beyond bounds in ap_strcmp_match(): Apache HTTP Server 2.4.53 and earlier may crash or disclose
+    information due to a read beyond bounds in ap_strcmp_match() when provided with an extremely large input
+    buffer.  While no code distributed with the server can be coerced into such a call, third-party modules or
+    lua scripts that use ap_strcmp_match() may hypothetically be affected. Acknowledgements: The Apache HTTP
+    Server project would like to thank Ronald Crane (Zippenhop LLC) for reporting this issue (CVE-2022-28615)
+
+Note that Nessus has not tested for these issues but has instead relied only on the application's self-reported version
+number.","Upgrade to Apache version 2.4.54 or later.","https://httpd.apache.org/security/vulnerabilities_24.html","
+  URL               : http://192.168.0.117/
+  Installed version : 2.2.17
+  Fixed version     : 2.4.54
+","I","","","9.1","4.7","7.9","","","Medium","","IAVA:2022-A-0230-S","","2022/06/08","2024/04/18","","",""
+"170113","CVE-2006-20001","7.6","High","192.168.0.117","tcp","80","Apache 2.4.x < 2.4.55 Multiple Vulnerabilities","The remote web server is affected by multiple vulnerabilities.","The version of Apache httpd installed on the remote host is prior to 2.4.55. It is, therefore, affected by multiple
+vulnerabilities as referenced in the 2.4.55 advisory.
+
+  - A carefully crafted If: request header can cause a memory read, or write of a single zero byte, in a pool
+    (heap) memory location beyond the header value sent. This could cause the process to crash. This issue
+    affects Apache HTTP Server 2.4.54 and earlier. (CVE-2006-20001)
+
+  - Inconsistent Interpretation of HTTP Requests ('HTTP Request Smuggling') vulnerability in mod_proxy_ajp of
+    Apache HTTP Server allows an attacker to smuggle requests to the AJP server it forwards requests to. This
+    issue affects Apache HTTP Server Apache HTTP Server 2.4 version 2.4.54 and prior versions.
+    (CVE-2022-36760)
+
+  - Prior to Apache HTTP Server 2.4.55, a malicious backend can cause the response headers to be truncated
+    early, resulting in some headers being incorporated into the response body. If the later headers have any
+    security purpose, they will not be interpreted by the client. (CVE-2022-37436)
+
+Note that Nessus has not tested for these issues but has instead relied only on the application's self-reported version
+number.","Upgrade to Apache version 2.4.55 or later.","","
+  URL               : http://192.168.0.117/
+  Installed version : 2.2.17
+  Fixed version     : 2.4.55
+","I","","","9.0","5.6","7.8","","","High","","IAVA:2023-A-0047-S","","2023/01/18","2023/03/10","","",""
+"170113","CVE-2022-36760","7.6","High","192.168.0.117","tcp","80","Apache 2.4.x < 2.4.55 Multiple Vulnerabilities","The remote web server is affected by multiple vulnerabilities.","The version of Apache httpd installed on the remote host is prior to 2.4.55. It is, therefore, affected by multiple
+vulnerabilities as referenced in the 2.4.55 advisory.
+
+  - A carefully crafted If: request header can cause a memory read, or write of a single zero byte, in a pool
+    (heap) memory location beyond the header value sent. This could cause the process to crash. This issue
+    affects Apache HTTP Server 2.4.54 and earlier. (CVE-2006-20001)
+
+  - Inconsistent Interpretation of HTTP Requests ('HTTP Request Smuggling') vulnerability in mod_proxy_ajp of
+    Apache HTTP Server allows an attacker to smuggle requests to the AJP server it forwards requests to. This
+    issue affects Apache HTTP Server Apache HTTP Server 2.4 version 2.4.54 and prior versions.
+    (CVE-2022-36760)
+
+  - Prior to Apache HTTP Server 2.4.55, a malicious backend can cause the response headers to be truncated
+    early, resulting in some headers being incorporated into the response body. If the later headers have any
+    security purpose, they will not be interpreted by the client. (CVE-2022-37436)
+
+Note that Nessus has not tested for these issues but has instead relied only on the application's self-reported version
+number.","Upgrade to Apache version 2.4.55 or later.","","
+  URL               : http://192.168.0.117/
+  Installed version : 2.2.17
+  Fixed version     : 2.4.55
+","I","","","9.0","5.6","7.8","","","High","","IAVA:2023-A-0047-S","","2023/01/18","2023/03/10","","",""
+"170113","CVE-2022-37436","7.6","High","192.168.0.117","tcp","80","Apache 2.4.x < 2.4.55 Multiple Vulnerabilities","The remote web server is affected by multiple vulnerabilities.","The version of Apache httpd installed on the remote host is prior to 2.4.55. It is, therefore, affected by multiple
+vulnerabilities as referenced in the 2.4.55 advisory.
+
+  - A carefully crafted If: request header can cause a memory read, or write of a single zero byte, in a pool
+    (heap) memory location beyond the header value sent. This could cause the process to crash. This issue
+    affects Apache HTTP Server 2.4.54 and earlier. (CVE-2006-20001)
+
+  - Inconsistent Interpretation of HTTP Requests ('HTTP Request Smuggling') vulnerability in mod_proxy_ajp of
+    Apache HTTP Server allows an attacker to smuggle requests to the AJP server it forwards requests to. This
+    issue affects Apache HTTP Server Apache HTTP Server 2.4 version 2.4.54 and prior versions.
+    (CVE-2022-36760)
+
+  - Prior to Apache HTTP Server 2.4.55, a malicious backend can cause the response headers to be truncated
+    early, resulting in some headers being incorporated into the response body. If the later headers have any
+    security purpose, they will not be interpreted by the client. (CVE-2022-37436)
+
+Note that Nessus has not tested for these issues but has instead relied only on the application's self-reported version
+number.","Upgrade to Apache version 2.4.55 or later.","","
+  URL               : http://192.168.0.117/
+  Installed version : 2.2.17
+  Fixed version     : 2.4.55
+","I","","","9.0","5.6","7.8","","","High","","IAVA:2023-A-0047-S","","2023/01/18","2023/03/10","","",""
+"171356","","10.0","Critical","192.168.0.117","tcp","80","Apache HTTP Server SEoL (2.1.x <= x <= 2.2.x)","An unsupported version of Apache HTTP Server is installed on the remote host.","According to its version, Apache HTTP Server is between 2.1.x and 2.2.x. It is, therefore, no longer maintained by its
+vendor or provider.
+
+Lack of support implies that no new security patches for the product will be released by the vendor. As a result, it may
+contain security vulnerabilities.","Upgrade to a version of Apache HTTP Server that is currently supported.","https://archive.apache.org/dist/httpd/Announcement2.2.txt","
+  URL                                    : http://192.168.0.117/
+  Installed version                      : 2.2.17
+  Security End of Life                   : July 11, 2017
+  Time since Security End of Life (Est.) : >= 8 years
+","","","","10.0","","","","","Critical","","","","2023/02/10","2024/04/02","","",""
+"172186","CVE-2023-25690","10.0","Critical","192.168.0.117","tcp","80","Apache 2.4.x < 2.4.56 Multiple Vulnerabilities","The remote web server is affected by multiple vulnerabilities.","The version of Apache httpd installed on the remote host is prior to 2.4.56. It is, therefore, affected by multiple
+vulnerabilities as referenced in the 2.4.56 advisory.
+
+  - HTTP request splitting with mod_rewrite and mod_proxy: Some mod_proxy configurations on Apache HTTP Server
+    versions 2.4.0 through 2.4.55 allow a HTTP Request Smuggling attack. Configurations are affected when
+    mod_proxy is enabled along with some form of RewriteRule or ProxyPassMatch in which a non-specific pattern
+    matches some portion of the user-supplied request-target (URL) data and is then re-inserted into the
+    proxied request-target using variable substitution. For example, something like: RewriteEngine on
+    RewriteRule ^/here/(.*)  http://example.com:8080/elsewhere?$1 http://example.com:8080/elsewhere ; [P]
+    ProxyPassReverse /here/ http://example.com:8080/ http://example.com:8080/ Request splitting/smuggling
+    could result in bypass of access controls in the proxy server, proxying unintended URLs to existing origin
+    servers, and cache poisoning. Acknowledgements: finder: Lars Krapf of Adobe (CVE-2023-25690)
+
+  - Apache HTTP Server: mod_proxy_uwsgi HTTP response splitting: HTTP Response Smuggling vulnerability in
+    Apache HTTP Server via mod_proxy_uwsgi. This issue affects Apache HTTP Server: from 2.4.30 through 2.4.55.
+    Special characters in the origin response header can truncate/split the response forwarded to the client.
+    Acknowledgements: finder: Dimas Fariski Setyawan Putra (nyxsorcerer) (CVE-2023-27522)
+
+Note that Nessus has not tested for these issues but has instead relied only on the application's self-reported version
+number.","Upgrade to Apache version 2.4.56 or later.","","
+  URL               : http://192.168.0.117/
+  Installed version : 2.2.17
+  Fixed version     : 2.4.56
+","I","","","9.8","7.8","8.8","","","Critical","","IAVA:2023-A-0124-S","","2023/03/07","2023/10/21","","",""
+"172186","CVE-2023-27522","10.0","Critical","192.168.0.117","tcp","80","Apache 2.4.x < 2.4.56 Multiple Vulnerabilities","The remote web server is affected by multiple vulnerabilities.","The version of Apache httpd installed on the remote host is prior to 2.4.56. It is, therefore, affected by multiple
+vulnerabilities as referenced in the 2.4.56 advisory.
+
+  - HTTP request splitting with mod_rewrite and mod_proxy: Some mod_proxy configurations on Apache HTTP Server
+    versions 2.4.0 through 2.4.55 allow a HTTP Request Smuggling attack. Configurations are affected when
+    mod_proxy is enabled along with some form of RewriteRule or ProxyPassMatch in which a non-specific pattern
+    matches some portion of the user-supplied request-target (URL) data and is then re-inserted into the
+    proxied request-target using variable substitution. For example, something like: RewriteEngine on
+    RewriteRule ^/here/(.*)  http://example.com:8080/elsewhere?$1 http://example.com:8080/elsewhere ; [P]
+    ProxyPassReverse /here/ http://example.com:8080/ http://example.com:8080/ Request splitting/smuggling
+    could result in bypass of access controls in the proxy server, proxying unintended URLs to existing origin
+    servers, and cache poisoning. Acknowledgements: finder: Lars Krapf of Adobe (CVE-2023-25690)
+
+  - Apache HTTP Server: mod_proxy_uwsgi HTTP response splitting: HTTP Response Smuggling vulnerability in
+    Apache HTTP Server via mod_proxy_uwsgi. This issue affects Apache HTTP Server: from 2.4.30 through 2.4.55.
+    Special characters in the origin response header can truncate/split the response forwarded to the client.
+    Acknowledgements: finder: Dimas Fariski Setyawan Putra (nyxsorcerer) (CVE-2023-27522)
+
+Note that Nessus has not tested for these issues but has instead relied only on the application's self-reported version
+number.","Upgrade to Apache version 2.4.56 or later.","","
+  URL               : http://192.168.0.117/
+  Installed version : 2.2.17
+  Fixed version     : 2.4.56
+","I","","","9.8","7.8","8.8","","","Critical","","IAVA:2023-A-0124-S","","2023/03/07","2023/10/21","","",""
+"183391","CVE-2023-43622","7.8","High","192.168.0.117","tcp","80","Apache 2.4.x < 2.4.58 Multiple Vulnerabilities","The remote web server is affected by multiple vulnerabilities.","The version of Apache httpd installed on the remote host is prior to 2.4.58. It is, therefore, affected by multiple
+vulnerabilities as referenced in the 2.4.58 advisory.
+
+  - Apache HTTP Server: DoS in HTTP/2 with initial windows size 0: An attacker, opening a HTTP/2 connection
+    with an initial window size of 0, was able to block handling of that connection indefinitely in Apache
+    HTTP Server. This could be used to exhaust worker resources in the server, similar to the well known slow
+    loris attack pattern. This has been fixed in version 2.4.58, so that such connection are terminated
+    properly after the configured connection timeout. This issue affects Apache HTTP Server: from 2.4.55
+    through 2.4.57. Users are recommended to upgrade to version 2.4.58, which fixes the issue.
+    Acknowledgements: (CVE-2023-43622)
+
+  - Apache HTTP Server: HTTP/2 stream memory not reclaimed right away on RST: When a HTTP/2 stream was reset
+    (RST frame) by a client, there was a time window were the request's memory resources were not reclaimed
+    immediately. Instead, de-allocation was deferred to connection close. A client could send new requests and
+    resets, keeping the connection busy and open and causing the memory footprint to keep on growing. On
+    connection close, all resources were reclaimed, but the process might run out of memory before that. This
+    was found by the reporter during testing of CVE-2023-44487 (HTTP/2 Rapid Reset Exploit) with their own
+    test client. During normal HTTP/2 use, the probability to hit this bug is very low. The kept memory
+    would not become noticeable before the connection closes or times out. Users are recommended to upgrade to
+    version 2.4.58, which fixes the issue. Acknowledgements: (CVE-2023-45802)
+
+Note that Nessus has not tested for these issues but has instead relied only on the application's self-reported version
+number.","Upgrade to Apache version 2.4.58 or later.","","
+  URL               : http://192.168.0.117/
+  Installed version : 2.2.17
+  Fixed version     : 2.4.58
+","I","","","7.5","5.8","6.5","","","High","","IAVA:2023-A-0572-S","","2023/10/19","2024/04/29","","",""
+"183391","CVE-2023-45802","7.8","High","192.168.0.117","tcp","80","Apache 2.4.x < 2.4.58 Multiple Vulnerabilities","The remote web server is affected by multiple vulnerabilities.","The version of Apache httpd installed on the remote host is prior to 2.4.58. It is, therefore, affected by multiple
+vulnerabilities as referenced in the 2.4.58 advisory.
+
+  - Apache HTTP Server: DoS in HTTP/2 with initial windows size 0: An attacker, opening a HTTP/2 connection
+    with an initial window size of 0, was able to block handling of that connection indefinitely in Apache
+    HTTP Server. This could be used to exhaust worker resources in the server, similar to the well known slow
+    loris attack pattern. This has been fixed in version 2.4.58, so that such connection are terminated
+    properly after the configured connection timeout. This issue affects Apache HTTP Server: from 2.4.55
+    through 2.4.57. Users are recommended to upgrade to version 2.4.58, which fixes the issue.
+    Acknowledgements: (CVE-2023-43622)
+
+  - Apache HTTP Server: HTTP/2 stream memory not reclaimed right away on RST: When a HTTP/2 stream was reset
+    (RST frame) by a client, there was a time window were the request's memory resources were not reclaimed
+    immediately. Instead, de-allocation was deferred to connection close. A client could send new requests and
+    resets, keeping the connection busy and open and causing the memory footprint to keep on growing. On
+    connection close, all resources were reclaimed, but the process might run out of memory before that. This
+    was found by the reporter during testing of CVE-2023-44487 (HTTP/2 Rapid Reset Exploit) with their own
+    test client. During normal HTTP/2 use, the probability to hit this bug is very low. The kept memory
+    would not become noticeable before the connection closes or times out. Users are recommended to upgrade to
+    version 2.4.58, which fixes the issue. Acknowledgements: (CVE-2023-45802)
+
+Note that Nessus has not tested for these issues but has instead relied only on the application's self-reported version
+number.","Upgrade to Apache version 2.4.58 or later.","","
+  URL               : http://192.168.0.117/
+  Installed version : 2.2.17
+  Fixed version     : 2.4.58
+","I","","","7.5","5.8","6.5","","","High","","IAVA:2023-A-0572-S","","2023/10/19","2024/04/29","","",""
+"192923","CVE-2023-38709","7.8","High","192.168.0.117","tcp","80","Apache 2.4.x < 2.4.59 Multiple Vulnerabilities","The remote web server is affected by multiple vulnerabilities.","The version of Apache httpd installed on the remote host is prior to 2.4.59. It is, therefore, affected by multiple
+vulnerabilities as referenced in the 2.4.59 advisory.
+
+  - Apache HTTP Server: HTTP Response Splitting in multiple modules: HTTP Response splitting in multiple
+    modules in Apache HTTP Server allows an attacker that can inject malicious response headers into backend
+    applications to cause an HTTP desynchronization attack. Users are recommended to upgrade to version
+    2.4.59, which fixes this issue. Acknowledgements: (CVE-2024-24795)
+
+  - Apache HTTP Server: HTTP/2 DoS by memory exhaustion on endless continuation frames: HTTP/2 incoming
+    headers exceeding the limit are temporarily buffered in nghttp2 in order to generate an informative HTTP
+    413 response. If a client does not stop sending headers, this leads to memory exhaustion.
+    Acknowledgements: finder: Bartek Nowotarski (https://nowotarski.info/) (CVE-2024-27316)
+
+Note that Nessus has not tested for these issues but has instead relied only on the application's self-reported version
+number.","Upgrade to Apache version 2.4.59 or later.","","
+  URL               : http://192.168.0.117/
+  Installed version : 2.2.17
+  Fixed version     : 2.4.59
+","I","","","7.5","5.8","6.5","","","High","","IAVA:2024-A-0202-S","","2024/04/04","2024/07/12","","",""
+"192923","CVE-2024-24795","7.8","High","192.168.0.117","tcp","80","Apache 2.4.x < 2.4.59 Multiple Vulnerabilities","The remote web server is affected by multiple vulnerabilities.","The version of Apache httpd installed on the remote host is prior to 2.4.59. It is, therefore, affected by multiple
+vulnerabilities as referenced in the 2.4.59 advisory.
+
+  - Apache HTTP Server: HTTP Response Splitting in multiple modules: HTTP Response splitting in multiple
+    modules in Apache HTTP Server allows an attacker that can inject malicious response headers into backend
+    applications to cause an HTTP desynchronization attack. Users are recommended to upgrade to version
+    2.4.59, which fixes this issue. Acknowledgements: (CVE-2024-24795)
+
+  - Apache HTTP Server: HTTP/2 DoS by memory exhaustion on endless continuation frames: HTTP/2 incoming
+    headers exceeding the limit are temporarily buffered in nghttp2 in order to generate an informative HTTP
+    413 response. If a client does not stop sending headers, this leads to memory exhaustion.
+    Acknowledgements: finder: Bartek Nowotarski (https://nowotarski.info/) (CVE-2024-27316)
+
+Note that Nessus has not tested for these issues but has instead relied only on the application's self-reported version
+number.","Upgrade to Apache version 2.4.59 or later.","","
+  URL               : http://192.168.0.117/
+  Installed version : 2.2.17
+  Fixed version     : 2.4.59
+","I","","","7.5","5.8","6.5","","","High","","IAVA:2024-A-0202-S","","2024/04/04","2024/07/12","","",""
+"192923","CVE-2024-27316","7.8","High","192.168.0.117","tcp","80","Apache 2.4.x < 2.4.59 Multiple Vulnerabilities","The remote web server is affected by multiple vulnerabilities.","The version of Apache httpd installed on the remote host is prior to 2.4.59. It is, therefore, affected by multiple
+vulnerabilities as referenced in the 2.4.59 advisory.
+
+  - Apache HTTP Server: HTTP Response Splitting in multiple modules: HTTP Response splitting in multiple
+    modules in Apache HTTP Server allows an attacker that can inject malicious response headers into backend
+    applications to cause an HTTP desynchronization attack. Users are recommended to upgrade to version
+    2.4.59, which fixes this issue. Acknowledgements: (CVE-2024-24795)
+
+  - Apache HTTP Server: HTTP/2 DoS by memory exhaustion on endless continuation frames: HTTP/2 incoming
+    headers exceeding the limit are temporarily buffered in nghttp2 in order to generate an informative HTTP
+    413 response. If a client does not stop sending headers, this leads to memory exhaustion.
+    Acknowledgements: finder: Bartek Nowotarski (https://nowotarski.info/) (CVE-2024-27316)
+
+Note that Nessus has not tested for these issues but has instead relied only on the application's self-reported version
+number.","Upgrade to Apache version 2.4.59 or later.","","
+  URL               : http://192.168.0.117/
+  Installed version : 2.2.17
+  Fixed version     : 2.4.59
+","I","","","7.5","5.8","6.5","","","High","","IAVA:2024-A-0202-S","","2024/04/04","2024/07/12","","",""
+"193419","CVE-2023-31122","7.8","High","192.168.0.117","tcp","80","Apache 2.4.x < 2.4.58 Out-of-Bounds Read (CVE-2023-31122)","The remote web server is affected by an out-of-bounds read vulnerability.","The version of Apache httpd installed on the remote host is prior to 2.4.58. It is, therefore, affected by multiple
+vulnerabilities as referenced in the 2.4.58 advisory.
+
+  - mod_macro buffer over-read: Out-of-bounds Read vulnerability in mod_macro of Apache HTTP Server. This issue
+    affects Apache HTTP Server: through 2.4.57. 
+
+Note that Nessus has not tested for these issues but has instead relied only on the application's self-reported version
+number.","Upgrade to Apache version 2.4.58 or later.","","
+  URL               : http://192.168.0.117/
+  Installed version : 2.2.17
+  Fixed version     : 2.4.58
+","I","","","7.5","5.8","6.5","","","High","","IAVA:2023-A-0572-S","","2024/04/17","2024/04/29","","",""
+"193420","CVE-2022-28330","5.0","Medium","192.168.0.117","tcp","80","Apache 2.4.x < 2.4.54 Out-Of-Bounds Read (CVE-2022-28330)","The remote web server is affected by an out-of-bound read vulnerability","The version of Apache httpd installed on the remote host is prior to 2.4.54. It is, therefore, affected by an 
+out-of-bounds read vulnerability as referenced in the 2.4.54 advisory.
+
+  - Read beyond bounds in mod_isapi: Apache HTTP Server 2.4.53 and earlier on Windows may read beyond bounds
+    when configured to process requests with the mod_isapi module.  Acknowledgements: The Apache HTTP Server
+    project would like to thank Ronald Crane (Zippenhop LLC) for reporting this issue 
+
+Note that Nessus has not tested for these issues but has instead relied only on the application's self-reported version
+number.","Upgrade to Apache version 2.4.54 or later.","https://httpd.apache.org/security/vulnerabilities_24.html","
+  URL               : http://192.168.0.117/
+  Installed version : 2.2.17
+  Fixed version     : 2.4.54
+","I","","","5.3","3.7","4.6","","","Medium","","IAVA:2022-A-0230-S","","2024/04/17","2024/04/18","","",""
+"193421","CVE-2022-31813","7.5","High","192.168.0.117","tcp","80","Apache 2.4.x < 2.4.54 Authentication Bypass","The remote web server is affected by an authentication bypass vulnerability.","The version of Apache httpd installed on the remote host is prior to 2.4.54. It is, therefore, affected by an 
+authentication bypass vulnerability as referenced in the 2.4.54 advisory.
+
+  - X-Forwarded-For dropped by hop-by-hop mechanism in mod_proxy: Apache HTTP Server 2.4.53 and earlier may not
+    send the X-Forwarded-* headers to the origin server based on client side Connection header hop-by-hop
+    mechanism. This may be used to bypass IP based authentication on the origin server/application.
+    Acknowledgements: The Apache HTTP Server project would like to thank Gaetan Ferry (Synacktiv) for
+    reporting this issue 
+
+Note that Nessus has not tested for these issues but has instead relied only on the application's self-reported version
+number.","Upgrade to Apache version 2.4.54 or later.","https://httpd.apache.org/security/vulnerabilities_24.html","
+  URL               : http://192.168.0.117/
+  Installed version : 2.2.17
+  Fixed version     : 2.4.54
+","I","","","9.8","5.5","8.5","","","High","","IAVA:2022-A-0230-S","","2024/04/17","2024/04/18","","",""
+"193422","CVE-2022-26377","5.0","Medium","192.168.0.117","tcp","80","Apache 2.4.x < 2.4.54 HTTP Request Smuggling Vulnerability","The remote web server is affected by a HTTP request smuggling vulnerability.","The version of Apache httpd installed on the remote host is prior to 2.4.54. It is, therefore, affected by a http
+request smuggling vulnerability as referenced in the 2.4.54 advisory.
+
+  - Possible request smuggling in mod_proxy_ajp: Inconsistent Interpretation of HTTP Requests ('HTTP Request
+    Smuggling') vulnerability in mod_proxy_ajp of Apache HTTP Server allows an attacker to smuggle requests to
+    the AJP server it forwards requests to.  This issue affects Apache HTTP Server Apache HTTP Server 2.4
+    version 2.4.53 and prior versions. Acknowledgements: Ricter Z @ 360 Noah Lab
+
+Note that Nessus has not tested for these issues but has instead relied only on the application's self-reported version
+number.","Upgrade to Apache version 2.4.54 or later.","https://httpd.apache.org/security/vulnerabilities_24.html","
+  URL               : http://192.168.0.117/
+  Installed version : 2.2.17
+  Fixed version     : 2.4.54
+","I","","","7.5","3.7","6.5","","","Medium","","IAVA:2022-A-0230-S","","2024/04/17","2024/04/18","","",""
+"193423","CVE-2022-30522","5.0","Medium","192.168.0.117","tcp","80","Apache 2.4.x < 2.4.54 Multiple Vulnerabilities","The remote web server is affected by multiple vulnerabilities.","The version of Apache httpd installed on the remote host is prior to 2.4.54. It is, therefore, affected by multiple
+vulnerabilities as referenced in the 2.4.54 advisory.
+
+  - Denial of Service mod_sed: If Apache HTTP Server 2.4.53 is configured to do transformations with mod_sed in
+    contexts where the input to mod_sed may be very large, mod_sed may make excessively large memory
+    allocations and trigger an abort. Acknowledgements: This issue was found by Brian Moussalli from the JFrog
+    Security Research team
+
+Note that Nessus has not tested for these issues but has instead relied only on the application's self-reported version
+number.","Upgrade to Apache version 2.4.54 or later.","https://httpd.apache.org/security/vulnerabilities_24.html","
+  URL               : http://192.168.0.117/
+  Installed version : 2.2.17
+  Fixed version     : 2.4.54
+","I","","","7.5","3.7","6.5","","","Medium","","IAVA:2022-A-0230-S","","2024/04/17","2024/04/18","","",""
+"193424","CVE-2022-29404","5.0","Medium","192.168.0.117","tcp","80","Apache 2.4.x < 2.4.54 Multiple Vulnerabilities (mod_lua)","The remote web server is affected by multiple vulnerabilities.","The version of Apache httpd installed on the remote host is prior to 2.4.54. It is, therefore, affected by multiple
+vulnerabilities as referenced in the 2.4.54 advisory.
+
+  - Denial of service in mod_lua r:parsebody: In Apache HTTP Server 2.4.53 and earlier, a malicious request to a
+    lua script that calls r:parsebody(0) may cause a denial of service due to no default limit on possible
+    input size. Acknowledgements: The Apache HTTP Server project would like to thank Ronald Crane (Zippenhop
+    LLC) for reporting this issue (CVE-2022-29404)
+
+  - Information Disclosure in mod_lua with websockets: Apache HTTP Server 2.4.53 and earlier may return lengths
+    to applications calling r:wsread() that point past the end of the storage allocated for the buffer.
+    Acknowledgements: The Apache HTTP Server project would like to thank Ronald Crane (Zippenhop LLC) for
+    reporting this issue (CVE-2022-30556)
+
+Note that Nessus has not tested for these issues but has instead relied only on the application's self-reported version
+number.","Upgrade to Apache version 2.4.54 or later.","https://httpd.apache.org/security/vulnerabilities_24.html","
+  URL               : http://192.168.0.117/
+  Installed version : 2.2.17
+  Fixed version     : 2.4.54
+","I","","","7.5","3.7","6.5","","","Medium","","IAVA:2022-A-0230-S","","2024/04/17","2024/04/18","","",""
+"193424","CVE-2022-30556","5.0","Medium","192.168.0.117","tcp","80","Apache 2.4.x < 2.4.54 Multiple Vulnerabilities (mod_lua)","The remote web server is affected by multiple vulnerabilities.","The version of Apache httpd installed on the remote host is prior to 2.4.54. It is, therefore, affected by multiple
+vulnerabilities as referenced in the 2.4.54 advisory.
+
+  - Denial of service in mod_lua r:parsebody: In Apache HTTP Server 2.4.53 and earlier, a malicious request to a
+    lua script that calls r:parsebody(0) may cause a denial of service due to no default limit on possible
+    input size. Acknowledgements: The Apache HTTP Server project would like to thank Ronald Crane (Zippenhop
+    LLC) for reporting this issue (CVE-2022-29404)
+
+  - Information Disclosure in mod_lua with websockets: Apache HTTP Server 2.4.53 and earlier may return lengths
+    to applications calling r:wsread() that point past the end of the storage allocated for the buffer.
+    Acknowledgements: The Apache HTTP Server project would like to thank Ronald Crane (Zippenhop LLC) for
+    reporting this issue (CVE-2022-30556)
+
+Note that Nessus has not tested for these issues but has instead relied only on the application's self-reported version
+number.","Upgrade to Apache version 2.4.54 or later.","https://httpd.apache.org/security/vulnerabilities_24.html","
+  URL               : http://192.168.0.117/
+  Installed version : 2.2.17
+  Fixed version     : 2.4.54
+","I","","","7.5","3.7","6.5","","","Medium","","IAVA:2022-A-0230-S","","2024/04/17","2024/04/18","","",""
+"209654","","","None","192.168.0.117","tcp","0","OS Fingerprints Detected","Multiple OS fingerprints were detected.","Using a combination of remote probes (TCP/IP, SMB, HTTP, NTP, SNMP, etc), 
+it was possible to gather one or more fingerprints from the remote system. 
+While the highest-confidence result was reported in plugin 11936, “OS Identification”, 
+the complete set of fingerprints detected are reported here.","n/a","","
+Following OS Fingerprints were found
+
+Remote operating system : Debian 7.0 Linux Kernel 3.2
+Confidence level : 56
+Method : MLSinFP
+Type : unknown
+Fingerprint : unknown
+
+Remote operating system : Linux Kernel 3.x
+Confidence level : 59
+Method : SinFP
+Type : general-purpose
+Fingerprint : SinFP:
+   P1:B10113:F0x12:W14600:O0204ffff:M1460:
+   P2:B10113:F0x12:W14480:O0204ffff0402080affffffff4445414401030306:M1460:
+   P3:B00000:F0x00:W0:O0:M0
+   P4:191303_7_p=80
+
+Following fingerprints could not be used to determine OS : 
+ HTTP:!:Server: Apache/2.2.17 (PCLinuxOS 2011/PREFORK-1pclos2011)
+
+","","","","","","","","","None","","","","2025/02/26","2025/03/03","","",""
+"242629","CVE-2025-54090","5.0","Medium","192.168.0.117","tcp","80","Apache 2.4.x < 2.4.65","The remote web server is affected by a vulnerability.","The version of Apache httpd installed on the remote host is prior to 2.4.65. It is, therefore, affected by a
+vulnerability as referenced in the 2.4.65 advisory.
+
+  - A bug in Apache HTTP Server 2.4.64 results in all RewriteCond expr ... tests evaluating as true. Users
+    are recommended to upgrade to version 2.4.65, which fixes the issue. (CVE-2025-54090)
+
+Note that Nessus has not tested for this issue but has instead relied only on the application's self-reported version
+number.","Upgrade to Apache version 2.4.65 or later.","","
+  URL               : http://192.168.0.117/
+  Installed version : 2.2.17
+  Fixed version     : 2.4.65
+","I","","","6.3","3.7","5.5","","","Medium","","IAVA:2025-A-0547","","2025/07/23","2025/07/25","","",""
